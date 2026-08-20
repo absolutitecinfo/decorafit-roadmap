@@ -10,20 +10,20 @@
     --paper:#f6f7f9; --card:#ffffff; --ink:#1c2433; --ink-muted:#5a6475;
     --ink-subtle:#8b93a3; --hairline:#dfe3ea; --accent:#2c4e9a;
     --accent-soft:#e8edf8; --ok:#2e7d5b; --ok-soft:#e6f2ec;
-    --warn:#b97324; --warn-soft:#f7eddd;
+    --warn:#b97324; --warn-soft:#f7eddd; --hoje:#d64545;
   }
   @media (prefers-color-scheme: dark) {
     :root {
       --paper:#141922; --card:#1c2330; --ink:#e8ebf1; --ink-muted:#a4adbe;
       --ink-subtle:#78829a; --hairline:#2c3546; --accent:#7fa3e8;
       --accent-soft:#24304a; --ok:#6cc39c; --ok-soft:#1e3329;
-      --warn:#dfa050; --warn-soft:#3a2e1c;
+      --warn:#dfa050; --warn-soft:#3a2e1c; --hoje:#e06c6c;
     }
   }
   * { box-sizing: border-box; }
   body { margin:0; background:var(--paper); color:var(--ink);
     font-family:"IBM Plex Sans","Segoe UI",system-ui,sans-serif; font-size:16px; line-height:1.55; }
-  .wrap { max-width:940px; margin:0 auto; padding:40px 20px 64px;
+  .wrap { max-width:1080px; margin:0 auto; padding:40px 20px 64px;
     display:flex; flex-direction:column; gap:36px; }
   .eyebrow { font-family:"IBM Plex Mono",monospace; font-size:.72rem;
     letter-spacing:.14em; text-transform:uppercase; color:var(--accent); margin:0 0 10px; }
@@ -31,20 +31,49 @@
     font-size:clamp(1.7rem,4vw,2.3rem); letter-spacing:-.01em; margin:0 0 6px; text-wrap:balance; }
   header p.lead { margin:0; color:var(--ink-muted); max-width:62ch; }
   h2 { font-family:"Archivo","Segoe UI",sans-serif; font-weight:600; font-size:1.12rem; margin:0 0 14px; }
-  .tl-bar { position:relative; height:4px; background:var(--hairline);
-    border-radius:2px; margin:80px 8px 100px; }
-  .tl-fill { position:absolute; inset:0 auto 0 0; background:var(--ok); border-radius:2px; }
-  .tl-node { position:absolute; top:50%; transform:translate(-50%,-50%);
-    width:15px; height:15px; border-radius:50%; background:var(--card); border:3px solid var(--accent); }
-  .tl-node.done { background:var(--ok); border-color:var(--ok); }
-  .tl-label { position:absolute; transform:translateX(-50%); width:160px;
-    text-align:center; font-size:.8rem; line-height:1.35; color:var(--ink-muted); }
-  .tl-label b { display:block; font-family:"IBM Plex Mono",monospace; font-size:.82rem; color:var(--ink); }
-  .tl-label.above { bottom:22px; } .tl-label.below { top:22px; }
-  .tl-list { display:none; flex-direction:column; gap:10px; margin:4px 0 0; padding:0; list-style:none; }
-  .tl-list li { display:flex; gap:12px; align-items:baseline; }
-  .tl-list b { font-family:"IBM Plex Mono",monospace; font-weight:500; color:var(--accent); white-space:nowrap; }
-  @media (max-width:640px) { .tl-bar { display:none; } .tl-list { display:flex; } }
+
+  /* ── Gantt ── */
+  .g-scroll { overflow-x:auto; border:1px solid var(--hairline); border-radius:12px; background:var(--card); }
+  .gantt { min-width:820px; padding:0 0 14px; }
+  .g-head { display:grid; grid-template-columns:252px 1fr; border-bottom:1px solid var(--hairline); }
+  .g-head-cell { padding:10px 14px; font-family:"IBM Plex Mono",monospace; font-size:.7rem;
+    letter-spacing:.1em; text-transform:uppercase; color:var(--ink-subtle); }
+  .g-meses { position:relative; height:38px; }
+  .g-mes { position:absolute; top:0; bottom:0; display:flex; align-items:center; padding-left:8px;
+    border-left:1px solid var(--hairline); font-family:"IBM Plex Mono",monospace;
+    font-size:.72rem; letter-spacing:.1em; text-transform:uppercase; color:var(--ink-muted); }
+  .g-marcos { display:grid; grid-template-columns:252px 1fr; border-bottom:1px solid var(--hairline); }
+  .g-marcos-lane { position:relative; height:112px; }
+  .g-losango { position:absolute; top:50%; left:0; width:11px; height:11px;
+    transform:translate(-50%,-50%) rotate(45deg); background:var(--card);
+    border:2.5px solid var(--accent); border-radius:2px; }
+  .g-losango.done { background:var(--ok); border-color:var(--ok); }
+  .g-marco-rotulo { position:absolute; transform:translateX(-50%); width:130px; text-align:center;
+    font-size:.72rem; line-height:1.3; color:var(--ink-muted); }
+  .g-marco-rotulo b { display:block; font-family:"IBM Plex Mono",monospace; font-size:.72rem; color:var(--ink); }
+  .g-marco-rotulo.cima { top:4px; } .g-marco-rotulo.baixo { bottom:4px; }
+  .g-row { display:grid; grid-template-columns:252px 1fr; align-items:stretch; }
+  .g-row + .g-row { border-top:1px solid var(--hairline); }
+  .g-titulo { display:flex; align-items:center; gap:8px; padding:10px 14px; font-size:.86rem;
+    border-right:1px solid var(--hairline); }
+  .g-nome { overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+  .dot { width:9px; height:9px; border-radius:50%; flex:none; }
+  .dot-ok { background:var(--ok); } .dot-warn { background:var(--warn); } .dot-accent { background:var(--accent); }
+  .g-track { position:relative; min-height:44px; }
+  .g-grade { position:absolute; top:0; bottom:0; width:1px; background:var(--hairline); opacity:.55; }
+  .g-hoje { position:absolute; top:0; bottom:0; width:2px; background:var(--hoje); opacity:.85; }
+  .g-bar { position:absolute; top:50%; transform:translateY(-50%); height:22px; border-radius:6px;
+    display:flex; align-items:center; gap:6px; padding:0 8px; overflow:hidden; white-space:nowrap; }
+  .bar-accent { background:var(--accent-soft); border:1.5px solid var(--accent); color:var(--accent); }
+  .bar-ok { background:var(--ok-soft); border:1.5px solid var(--ok); color:var(--ok); }
+  .bar-warn { background:var(--warn-soft); border:1.5px solid var(--warn); color:var(--warn); }
+  .bar-fechada { background:var(--ok); color:#fff; }
+  .g-periodo { font-family:"IBM Plex Mono",monospace; font-size:.68rem; }
+  .g-check { font-size:.75rem; }
+  .g-legenda { display:flex; flex-wrap:wrap; gap:14px 22px; padding:12px 14px 0; font-size:.78rem; color:var(--ink-muted); }
+  .g-legenda span { display:inline-flex; align-items:center; gap:6px; }
+
+  /* ── Cards de detalhe ── */
   .fases { display:flex; flex-direction:column; gap:12px; }
   .fase { background:var(--card); border:1px solid var(--hairline);
     border-left:4px solid var(--stripe,var(--accent)); border-radius:10px;
@@ -62,6 +91,7 @@
     font-weight:500; color:var(--accent); font-variant-numeric:tabular-nums; }
   .marco span { font-size:.72rem; letter-spacing:.1em; text-transform:uppercase; color:var(--ink-subtle); }
   @media (max-width:560px) { .fase { grid-template-columns:1fr; } .marco { text-align:left; } }
+
   .duas { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:24px; }
   .duas ul { margin:0; padding-left:20px; color:var(--ink-muted); font-size:.92rem;
     display:flex; flex-direction:column; gap:8px; }
@@ -73,7 +103,7 @@
 <body>
 <div class="wrap">
   <header>
-    <p class="eyebrow">Plataforma Decorafit · atualizado em 20/08/2026, 09:29</p>
+    <p class="eyebrow">Plataforma Decorafit · atualizado em 20/08/2026, 09:36</p>
     <h1>Release Plan — ago a nov/2026</h1>
     <p class="lead">Cronograma de entregas da plataforma. Esta pagina e gerada
     automaticamente a partir do andamento real do projeto — o status de cada
@@ -81,35 +111,104 @@
   </header>
 
   <section>
-    <h2>Marcos</h2>
-    <div class="tl-bar">
-      <div class="tl-fill" style="width:0.0%"></div>
-      
-      <div class="tl-node" style="left: 4.0%"></div>
-      <div class="tl-label above" style="left: 4.0%"><b>01/09</b>Planilha Orçamentária</div>
-      <div class="tl-node" style="left: 13.3%"></div>
-      <div class="tl-label below" style="left: 13.3%"><b>08/09</b>v1.0 — Ciclo Obra→Pagamento</div>
-      <div class="tl-node" style="left: 41.2%"></div>
-      <div class="tl-label above" style="left: 41.2%"><b>29/09</b>Fechamento da obra</div>
-      <div class="tl-node" style="left: 97.0%"></div>
-      <div class="tl-label below" style="left: 97.0%"><b>10/11</b>Experiência do Cliente</div>
+    <h2>Cronograma</h2>
+    <div class="g-scroll">
+      <div class="gantt">
+        <div class="g-head">
+          <div class="g-head-cell">Fase</div>
+          <div class="g-meses"><div class="g-mes" style="left:0.00%;width:24.76%">Ago</div><div class="g-mes" style="left:24.76%;width:28.57%">Set</div><div class="g-mes" style="left:53.33%;width:29.52%">Out</div><div class="g-mes" style="left:82.86%;width:17.14%">Nov</div></div>
+        </div>
+        <div class="g-marcos">
+          <div class="g-head-cell" style="align-self:center">Marcos</div>
+          <div class="g-marcos-lane">
+            <div class="g-grade" style="left:3.81%"></div><div class="g-grade" style="left:10.48%"></div><div class="g-grade" style="left:17.14%"></div><div class="g-grade" style="left:23.81%"></div><div class="g-grade" style="left:30.48%"></div><div class="g-grade" style="left:37.14%"></div><div class="g-grade" style="left:43.81%"></div><div class="g-grade" style="left:50.48%"></div><div class="g-grade" style="left:57.14%"></div><div class="g-grade" style="left:63.81%"></div><div class="g-grade" style="left:70.48%"></div><div class="g-grade" style="left:77.14%"></div><div class="g-grade" style="left:83.81%"></div><div class="g-grade" style="left:90.48%"></div><div class="g-grade" style="left:97.14%"></div>
+            <div class="g-hoje" style="left:13.83%"></div>
+            
+        <div class="g-losango" style="left:24.76%"></div>
+        <div class="g-marco-rotulo cima" style="left:24.76%"><b>01/09</b><span>Planilha Orçamentária</span></div>
+        <div class="g-losango" style="left:31.43%"></div>
+        <div class="g-marco-rotulo baixo" style="left:31.43%"><b>08/09</b><span>v1.0 — Ciclo Obra→Pagamento</span></div>
+        <div class="g-losango" style="left:51.43%"></div>
+        <div class="g-marco-rotulo cima" style="left:51.43%"><b>29/09</b><span>Fechamento da obra</span></div>
+        <div class="g-losango" style="left:91.43%"></div>
+        <div class="g-marco-rotulo baixo" style="left:91.43%"><b>10/11</b><span>Experiência do Cliente</span></div>
+          </div>
+        </div>
+        
+      <div class="g-row">
+        <div class="g-titulo"><span class="dot dot-warn"></span><span class="g-nome">Planilha Orçamentária — ciclo final de testes</span></div>
+        <div class="g-track">
+          <div class="g-grade" style="left:3.81%"></div><div class="g-grade" style="left:10.48%"></div><div class="g-grade" style="left:17.14%"></div><div class="g-grade" style="left:23.81%"></div><div class="g-grade" style="left:30.48%"></div><div class="g-grade" style="left:37.14%"></div><div class="g-grade" style="left:43.81%"></div><div class="g-grade" style="left:50.48%"></div><div class="g-grade" style="left:57.14%"></div><div class="g-grade" style="left:63.81%"></div><div class="g-grade" style="left:70.48%"></div><div class="g-grade" style="left:77.14%"></div><div class="g-grade" style="left:83.81%"></div><div class="g-grade" style="left:90.48%"></div><div class="g-grade" style="left:97.14%"></div>
+          <div class="g-hoje" style="left:13.83%"></div>
+          <div class="g-bar bar-warn" style="left:3.81%;width:20.95%" title="Planilha Orçamentária — ciclo final de testes · 10/08 – 01/09"><span class="g-periodo">10/08 – 01/09</span></div>
+        </div>
+      </div>
+      <div class="g-row">
+        <div class="g-titulo"><span class="dot dot-ok"></span><span class="g-nome">Refinos E2E do ciclo Obra→Pagamento</span></div>
+        <div class="g-track">
+          <div class="g-grade" style="left:3.81%"></div><div class="g-grade" style="left:10.48%"></div><div class="g-grade" style="left:17.14%"></div><div class="g-grade" style="left:23.81%"></div><div class="g-grade" style="left:30.48%"></div><div class="g-grade" style="left:37.14%"></div><div class="g-grade" style="left:43.81%"></div><div class="g-grade" style="left:50.48%"></div><div class="g-grade" style="left:57.14%"></div><div class="g-grade" style="left:63.81%"></div><div class="g-grade" style="left:70.48%"></div><div class="g-grade" style="left:77.14%"></div><div class="g-grade" style="left:83.81%"></div><div class="g-grade" style="left:90.48%"></div><div class="g-grade" style="left:97.14%"></div>
+          <div class="g-hoje" style="left:13.83%"></div>
+          <div class="g-bar bar-ok" style="left:12.38%;width:13.33%" title="Refinos E2E do ciclo Obra→Pagamento · 19/08 – 02/09"><span class="g-periodo">19/08 – 02/09</span></div>
+        </div>
+      </div>
+      <div class="g-row">
+        <div class="g-titulo"><span class="dot dot-accent"></span><span class="g-nome">Nota Fiscal na medicao + acertos Sienge</span></div>
+        <div class="g-track">
+          <div class="g-grade" style="left:3.81%"></div><div class="g-grade" style="left:10.48%"></div><div class="g-grade" style="left:17.14%"></div><div class="g-grade" style="left:23.81%"></div><div class="g-grade" style="left:30.48%"></div><div class="g-grade" style="left:37.14%"></div><div class="g-grade" style="left:43.81%"></div><div class="g-grade" style="left:50.48%"></div><div class="g-grade" style="left:57.14%"></div><div class="g-grade" style="left:63.81%"></div><div class="g-grade" style="left:70.48%"></div><div class="g-grade" style="left:77.14%"></div><div class="g-grade" style="left:83.81%"></div><div class="g-grade" style="left:90.48%"></div><div class="g-grade" style="left:97.14%"></div>
+          <div class="g-hoje" style="left:13.83%"></div>
+          <div class="g-bar bar-accent" style="left:14.29%;width:17.14%" title="Nota Fiscal na medicao + acertos Sienge · 21/08 – 08/09"><span class="g-periodo">21/08 – 08/09</span></div>
+        </div>
+      </div>
+      <div class="g-row">
+        <div class="g-titulo"><span class="dot dot-accent"></span><span class="g-nome">Compras: grupo, PDF do pedido e cronograma</span></div>
+        <div class="g-track">
+          <div class="g-grade" style="left:3.81%"></div><div class="g-grade" style="left:10.48%"></div><div class="g-grade" style="left:17.14%"></div><div class="g-grade" style="left:23.81%"></div><div class="g-grade" style="left:30.48%"></div><div class="g-grade" style="left:37.14%"></div><div class="g-grade" style="left:43.81%"></div><div class="g-grade" style="left:50.48%"></div><div class="g-grade" style="left:57.14%"></div><div class="g-grade" style="left:63.81%"></div><div class="g-grade" style="left:70.48%"></div><div class="g-grade" style="left:77.14%"></div><div class="g-grade" style="left:83.81%"></div><div class="g-grade" style="left:90.48%"></div><div class="g-grade" style="left:97.14%"></div>
+          <div class="g-hoje" style="left:13.83%"></div>
+          <div class="g-bar bar-accent" style="left:15.24%;width:16.19%" title="Compras: grupo, PDF do pedido e cronograma · 22/08 – 08/09"><span class="g-periodo">22/08 – 08/09</span></div>
+        </div>
+      </div>
+      <div class="g-row">
+        <div class="g-titulo"><span class="dot dot-accent"></span><span class="g-nome">Instancia dedicada de producao + release/rollback</span></div>
+        <div class="g-track">
+          <div class="g-grade" style="left:3.81%"></div><div class="g-grade" style="left:10.48%"></div><div class="g-grade" style="left:17.14%"></div><div class="g-grade" style="left:23.81%"></div><div class="g-grade" style="left:30.48%"></div><div class="g-grade" style="left:37.14%"></div><div class="g-grade" style="left:43.81%"></div><div class="g-grade" style="left:50.48%"></div><div class="g-grade" style="left:57.14%"></div><div class="g-grade" style="left:63.81%"></div><div class="g-grade" style="left:70.48%"></div><div class="g-grade" style="left:77.14%"></div><div class="g-grade" style="left:83.81%"></div><div class="g-grade" style="left:90.48%"></div><div class="g-grade" style="left:97.14%"></div>
+          <div class="g-hoje" style="left:13.83%"></div>
+          <div class="g-bar bar-accent" style="left:18.10%;width:13.33%" title="Instancia dedicada de producao + release/rollback · 25/08 – 08/09"><span class="g-periodo">25/08 – 08/09</span></div>
+        </div>
+      </div>
+      <div class="g-row">
+        <div class="g-titulo"><span class="dot dot-accent"></span><span class="g-nome">Fechamento da obra (4 funcionalidades)</span></div>
+        <div class="g-track">
+          <div class="g-grade" style="left:3.81%"></div><div class="g-grade" style="left:10.48%"></div><div class="g-grade" style="left:17.14%"></div><div class="g-grade" style="left:23.81%"></div><div class="g-grade" style="left:30.48%"></div><div class="g-grade" style="left:37.14%"></div><div class="g-grade" style="left:43.81%"></div><div class="g-grade" style="left:50.48%"></div><div class="g-grade" style="left:57.14%"></div><div class="g-grade" style="left:63.81%"></div><div class="g-grade" style="left:70.48%"></div><div class="g-grade" style="left:77.14%"></div><div class="g-grade" style="left:83.81%"></div><div class="g-grade" style="left:90.48%"></div><div class="g-grade" style="left:97.14%"></div>
+          <div class="g-hoje" style="left:13.83%"></div>
+          <div class="g-bar bar-accent" style="left:24.76%;width:26.67%" title="Fechamento da obra (4 funcionalidades) · 01/09 – 29/09"><span class="g-periodo">01/09 – 29/09</span></div>
+        </div>
+      </div>
+      <div class="g-row">
+        <div class="g-titulo"><span class="dot dot-accent"></span><span class="g-nome">Experiencia do Cliente</span></div>
+        <div class="g-track">
+          <div class="g-grade" style="left:3.81%"></div><div class="g-grade" style="left:10.48%"></div><div class="g-grade" style="left:17.14%"></div><div class="g-grade" style="left:23.81%"></div><div class="g-grade" style="left:30.48%"></div><div class="g-grade" style="left:37.14%"></div><div class="g-grade" style="left:43.81%"></div><div class="g-grade" style="left:50.48%"></div><div class="g-grade" style="left:57.14%"></div><div class="g-grade" style="left:63.81%"></div><div class="g-grade" style="left:70.48%"></div><div class="g-grade" style="left:77.14%"></div><div class="g-grade" style="left:83.81%"></div><div class="g-grade" style="left:90.48%"></div><div class="g-grade" style="left:97.14%"></div>
+          <div class="g-hoje" style="left:13.83%"></div>
+          <div class="g-bar bar-accent" style="left:44.76%;width:46.67%" title="Experiencia do Cliente · 22/09 – 10/11"><span class="g-periodo">22/09 – 10/11</span></div>
+        </div>
+      </div>
+        <div class="g-legenda">
+          <span><span class="dot dot-accent"></span>Planejado</span>
+          <span><span class="dot dot-ok"></span>Em andamento / Entregue</span>
+          <span><span class="dot dot-warn"></span>Em teste</span>
+          <span><span class="dot" style="background:var(--hoje)"></span>Hoje</span>
+        </div>
+      </div>
     </div>
-    <ul class="tl-list">
-      <li><b>01/09</b><span>Planilha Orçamentária</span></li>
-      <li><b>08/09</b><span>v1.0 — Ciclo Obra→Pagamento</span></li>
-      <li><b>29/09</b><span>Fechamento da obra</span></li>
-      <li><b>10/11</b><span>Experiência do Cliente</span></li>
-    </ul>
   </section>
 
   <section>
-    <h2>Fases</h2>
+    <h2>Fases em detalhe</h2>
     <div class="fases">
       <article class="fase" style="--stripe: var(--warn)">
         <div class="chips"><span class="chip chip-warn">Em teste</span></div>
         <div>
           <h3>Planilha Orçamentária — ciclo final de testes</h3>
-          <p class="desc">Desenvolvimento concluido; encerrando o ciclo de testes com o time ate 29/08. Liberada para uso real: 01/09. Janela: 10/08/2026 a 01/09/2026</p>
+          <p class="desc">Desenvolvimento concluido; encerrando o ciclo de testes com o time ate 29/08. Liberada para uso real: 01/09.</p>
         </div>
         <div class="marco"><span>Pronto</span><b>01/09</b></div>
       </article>
@@ -117,7 +216,7 @@
         <div class="chips"><span class="chip chip-ok">Em andamento</span></div>
         <div>
           <h3>Refinos E2E do ciclo Obra→Pagamento</h3>
-          <p class="desc">Lista fechada na reuniao de 19/08 (trava FVS libera etapa sem FVS, agendar sem gate de material, ativar em lote, verba do executor, badges/refetch, nomenclatura). Dev 19-26/08 · Teste 25/08-01/09 · Pronto 02/09. Lote 1 JA ENTREGUE (commit 2b38343); lote 2 em sequencia. Janela: 19/08/2026 a 02/09/2026</p>
+          <p class="desc">Lista fechada na reuniao de 19/08 (trava FVS libera etapa sem FVS, agendar sem gate de material, ativar em lote, verba do executor, badges/refetch, nomenclatura). Dev 19-26/08 · Teste 25/08-01/09 · Pronto 02/09. Lote 1 JA ENTREGUE (commit 2b38343); lote 2 em sequencia.</p>
         </div>
         <div class="marco"><span>Pronto</span><b>08/09</b></div>
       </article>
@@ -125,7 +224,7 @@
         <div class="chips"><span class="chip chip-accent">Planejado</span></div>
         <div>
           <h3>Nota Fiscal na medicao + acertos Sienge</h3>
-          <p class="desc">Flag &#39;Exige NF&#39; por fornecedor (default OFF); medicao exige nº + anexo da NF quando ligada; titulo Sienge tipo NF com nº da nota; credor 1:1 com o contratado (#76). Dev 21-28/08 · Teste c/ financeiro 01-05/09 · Pronto 08/09. Janela: 21/08/2026 a 08/09/2026</p>
+          <p class="desc">Flag &#39;Exige NF&#39; por fornecedor (default OFF); medicao exige nº + anexo da NF quando ligada; titulo Sienge tipo NF com nº da nota; credor 1:1 com o contratado (#76). Dev 21-28/08 · Teste c/ financeiro 01-05/09 · Pronto 08/09.</p>
         </div>
         <div class="marco"><span>Pronto</span><b>08/09</b></div>
       </article>
@@ -133,7 +232,7 @@
         <div class="chips"><span class="chip chip-accent">Planejado</span></div>
         <div>
           <h3>Compras: grupo, PDF do pedido e cronograma</h3>
-          <p class="desc">Compra por grupo no Meu Dia, PDF do pedido p/ suprimentos (versao simples primeiro), cronograma de compras. Dev 22/08-01/09 · Teste 02-05/09 · Pronto 08/09. Janela: 22/08/2026 a 08/09/2026</p>
+          <p class="desc">Compra por grupo no Meu Dia, PDF do pedido p/ suprimentos (versao simples primeiro), cronograma de compras. Dev 22/08-01/09 · Teste 02-05/09 · Pronto 08/09.</p>
         </div>
         <div class="marco"><span>Pronto</span><b>08/09</b></div>
       </article>
@@ -141,7 +240,7 @@
         <div class="chips"><span class="chip chip-accent">Planejado</span></div>
         <div>
           <h3>Instancia dedicada de producao + release/rollback</h3>
-          <p class="desc">Banco atual vira producao; novo homolog; processo de release/rollback. Corte v1.0: ~08/09. Janela: 25/08/2026 a 08/09/2026</p>
+          <p class="desc">Banco atual vira producao; novo homolog; processo de release/rollback. Corte v1.0: ~08/09.</p>
         </div>
         <div class="marco"><span>Pronto</span><b>08/09</b></div>
       </article>
@@ -149,7 +248,7 @@
         <div class="chips"><span class="chip chip-accent">Planejado</span></div>
         <div>
           <h3>Fechamento da obra (4 funcionalidades)</h3>
-          <p class="desc">Informativos de projeto · Vistoria para entrega · Entrega ao cliente · Encerramento administrativo. Spec 01-03/09 · Dev 04-17/09 · Teste 18-26/09 · Pronto 29/09. Janela: 01/09/2026 a 29/09/2026</p>
+          <p class="desc">Informativos de projeto · Vistoria para entrega · Entrega ao cliente · Encerramento administrativo. Spec 01-03/09 · Dev 04-17/09 · Teste 18-26/09 · Pronto 29/09.</p>
         </div>
         <div class="marco"><span>Pronto</span><b>29/09</b></div>
       </article>
@@ -157,7 +256,7 @@
         <div class="chips"><span class="chip chip-accent">Planejado</span></div>
         <div>
           <h3>Experiencia do Cliente</h3>
-          <p class="desc">Andamento da reforma · imagens · RSO do cliente · contratos (escopo a definir na spec com Phelps). Spec 22-26/09 · Dev 29/09-24/10 · Teste 27/10-07/11 · Pronto 10/11. Janela: 22/09/2026 a 10/11/2026</p>
+          <p class="desc">Andamento da reforma · imagens · RSO do cliente · contratos (escopo a definir na spec com Phelps). Spec 22-26/09 · Dev 29/09-24/10 · Teste 27/10-07/11 · Pronto 10/11.</p>
         </div>
         <div class="marco"><span>Pronto</span><b>10/11</b></div>
       </article>
@@ -183,7 +282,7 @@
     </div>
   </section>
 
-  <footer>Gerada automaticamente a partir do plano de entregas · Decorafit-tech · 20/08/2026, 09:29 (horario de Brasilia)</footer>
+  <footer>Gerada automaticamente a partir do plano de entregas · Decorafit-tech · 20/08/2026, 09:36 (horario de Brasilia)</footer>
 </div>
 </body>
 </html>
