@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Release Plan Decorafit</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+  :root {
+    --paper:#f6f7f9; --card:#ffffff; --ink:#1c2433; --ink-muted:#5a6475;
+    --ink-subtle:#8b93a3; --hairline:#dfe3ea; --accent:#2c4e9a;
+    --accent-soft:#e8edf8; --ok:#2e7d5b; --ok-soft:#e6f2ec;
+    --warn:#b97324; --warn-soft:#f7eddd;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --paper:#141922; --card:#1c2330; --ink:#e8ebf1; --ink-muted:#a4adbe;
+      --ink-subtle:#78829a; --hairline:#2c3546; --accent:#7fa3e8;
+      --accent-soft:#24304a; --ok:#6cc39c; --ok-soft:#1e3329;
+      --warn:#dfa050; --warn-soft:#3a2e1c;
+    }
+  }
+  * { box-sizing: border-box; }
+  body { margin:0; background:var(--paper); color:var(--ink);
+    font-family:"IBM Plex Sans","Segoe UI",system-ui,sans-serif; font-size:16px; line-height:1.55; }
+  .wrap { max-width:940px; margin:0 auto; padding:40px 20px 64px;
+    display:flex; flex-direction:column; gap:36px; }
+  .eyebrow { font-family:"IBM Plex Mono",monospace; font-size:.72rem;
+    letter-spacing:.14em; text-transform:uppercase; color:var(--accent); margin:0 0 10px; }
+  header h1 { font-family:"Archivo","Segoe UI",sans-serif; font-weight:700;
+    font-size:clamp(1.7rem,4vw,2.3rem); letter-spacing:-.01em; margin:0 0 6px; text-wrap:balance; }
+  header p.lead { margin:0; color:var(--ink-muted); max-width:62ch; }
+  h2 { font-family:"Archivo","Segoe UI",sans-serif; font-weight:600; font-size:1.12rem; margin:0 0 14px; }
+  .tl-bar { position:relative; height:4px; background:var(--hairline);
+    border-radius:2px; margin:80px 8px 100px; }
+  .tl-fill { position:absolute; inset:0 auto 0 0; background:var(--ok); border-radius:2px; }
+  .tl-node { position:absolute; top:50%; transform:translate(-50%,-50%);
+    width:15px; height:15px; border-radius:50%; background:var(--card); border:3px solid var(--accent); }
+  .tl-node.done { background:var(--ok); border-color:var(--ok); }
+  .tl-label { position:absolute; transform:translateX(-50%); width:160px;
+    text-align:center; font-size:.8rem; line-height:1.35; color:var(--ink-muted); }
+  .tl-label b { display:block; font-family:"IBM Plex Mono",monospace; font-size:.82rem; color:var(--ink); }
+  .tl-label.above { bottom:22px; } .tl-label.below { top:22px; }
+  .tl-list { display:none; flex-direction:column; gap:10px; margin:4px 0 0; padding:0; list-style:none; }
+  .tl-list li { display:flex; gap:12px; align-items:baseline; }
+  .tl-list b { font-family:"IBM Plex Mono",monospace; font-weight:500; color:var(--accent); white-space:nowrap; }
+  @media (max-width:640px) { .tl-bar { display:none; } .tl-list { display:flex; } }
+  .fases { display:flex; flex-direction:column; gap:12px; }
+  .fase { background:var(--card); border:1px solid var(--hairline);
+    border-left:4px solid var(--stripe,var(--accent)); border-radius:10px;
+    padding:16px 18px; display:grid; grid-template-columns:1fr auto; gap:6px 18px; }
+  .chips { grid-column:1 / -1; display:flex; flex-wrap:wrap; gap:8px; }
+  .chip { font-family:"IBM Plex Mono",monospace; font-size:.7rem; letter-spacing:.08em;
+    text-transform:uppercase; padding:3px 9px; border-radius:99px; }
+  .chip-accent { background:var(--accent-soft); color:var(--accent); }
+  .chip-ok { background:var(--ok-soft); color:var(--ok); }
+  .chip-warn { background:var(--warn-soft); color:var(--warn); }
+  .fase h3 { margin:4px 0 2px; font-size:1.02rem; font-weight:600; }
+  .fase p.desc { margin:0; font-size:.9rem; color:var(--ink-muted); max-width:58ch; }
+  .marco { text-align:right; align-self:start; white-space:nowrap; }
+  .marco b { display:block; font-family:"IBM Plex Mono",monospace; font-size:1.15rem;
+    font-weight:500; color:var(--accent); font-variant-numeric:tabular-nums; }
+  .marco span { font-size:.72rem; letter-spacing:.1em; text-transform:uppercase; color:var(--ink-subtle); }
+  @media (max-width:560px) { .fase { grid-template-columns:1fr; } .marco { text-align:left; } }
+  .duas { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:24px; }
+  .duas ul { margin:0; padding-left:20px; color:var(--ink-muted); font-size:.92rem;
+    display:flex; flex-direction:column; gap:8px; }
+  .duas li b { color:var(--ink); font-weight:600; }
+  footer { border-top:1px solid var(--hairline); padding-top:16px;
+    font-size:.84rem; color:var(--ink-subtle); }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <p class="eyebrow">Plataforma Decorafit · atualizado em 20/08/2026, 05:46</p>
+    <h1>Release Plan — ago a nov/2026</h1>
+    <p class="lead">Cronograma de entregas da plataforma. Esta pagina e gerada
+    automaticamente a partir do andamento real do projeto — o status de cada
+    fase reflete o estado de agora, nao uma foto antiga.</p>
+  </header>
+
+  <section>
+    <h2>Marcos</h2>
+    <div class="tl-bar">
+      <div class="tl-fill" style="width:0.0%"></div>
+      
+      <div class="tl-node" style="left: 4.0%"></div>
+      <div class="tl-label above" style="left: 4.0%"><b>01/09</b>Planilha Orçamentária</div>
+      <div class="tl-node" style="left: 13.3%"></div>
+      <div class="tl-label below" style="left: 13.3%"><b>08/09</b>v1.0 — Ciclo Obra→Pagamento</div>
+      <div class="tl-node" style="left: 41.2%"></div>
+      <div class="tl-label above" style="left: 41.2%"><b>29/09</b>Fechamento da obra</div>
+      <div class="tl-node" style="left: 97.0%"></div>
+      <div class="tl-label below" style="left: 97.0%"><b>10/11</b>Experiência do Cliente</div>
+    </div>
+    <ul class="tl-list">
+      <li><b>01/09</b><span>Planilha Orçamentária</span></li>
+      <li><b>08/09</b><span>v1.0 — Ciclo Obra→Pagamento</span></li>
+      <li><b>29/09</b><span>Fechamento da obra</span></li>
+      <li><b>10/11</b><span>Experiência do Cliente</span></li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Fases</h2>
+    <div class="fases">
+      <article class="fase" style="--stripe: var(--warn)">
+        <div class="chips"><span class="chip chip-warn">Em teste</span></div>
+        <div>
+          <h3>Planilha Orçamentária — ciclo final de testes</h3>
+          <p class="desc">Desenvolvimento concluido; encerrando o ciclo de testes com o time ate 29/08. Liberada para uso real: 01/09.</p>
+        </div>
+        <div class="marco"><span>Pronto</span><b>01/09</b></div>
+      </article>
+      <article class="fase" style="--stripe: var(--ok)">
+        <div class="chips"><span class="chip chip-ok">Em andamento</span></div>
+        <div>
+          <h3>Refinos E2E do ciclo Obra→Pagamento</h3>
+          <p class="desc">Lista fechada na reuniao de 19/08 (trava FVS libera etapa sem FVS, agendar sem gate de material, ativar em lote, verba do executor, badges/refetch, nomenclatura). Dev 19-26/08 · Teste 25/08-01/09 · Pronto 02/09. Lote 1 JA ENTREGUE (commit 2b38343); lote 2 em sequencia.</p>
+        </div>
+        <div class="marco"><span>Pronto</span><b>08/09</b></div>
+      </article>
+      <article class="fase" style="--stripe: var(--accent)">
+        <div class="chips"><span class="chip chip-accent">Planejado</span></div>
+        <div>
+          <h3>Nota Fiscal na medicao + acertos Sienge</h3>
+          <p class="desc">Flag &#39;Exige NF&#39; por fornecedor (default OFF); medicao exige nº + anexo da NF quando ligada; titulo Sienge tipo NF com nº da nota; credor 1:1 com o contratado (#76). Dev 21-28/08 · Teste c/ financeiro 01-05/09 · Pronto 08/09.</p>
+        </div>
+        <div class="marco"><span>Pronto</span><b>08/09</b></div>
+      </article>
+      <article class="fase" style="--stripe: var(--accent)">
+        <div class="chips"><span class="chip chip-accent">Planejado</span></div>
+        <div>
+          <h3>Compras: grupo, PDF do pedido e cronograma</h3>
+          <p class="desc">Compra por grupo no Meu Dia, PDF do pedido p/ suprimentos (versao simples primeiro), cronograma de compras. Dev 22/08-01/09 · Teste 02-05/09 · Pronto 08/09.</p>
+        </div>
+        <div class="marco"><span>Pronto</span><b>08/09</b></div>
+      </article>
+      <article class="fase" style="--stripe: var(--accent)">
+        <div class="chips"><span class="chip chip-accent">Planejado</span></div>
+        <div>
+          <h3>Instancia dedicada de producao + release/rollback</h3>
+          <p class="desc">Banco atual vira producao; novo homolog; processo de release/rollback. Corte v1.0: ~08/09.</p>
+        </div>
+        <div class="marco"><span>Pronto</span><b>08/09</b></div>
+      </article>
+      <article class="fase" style="--stripe: var(--accent)">
+        <div class="chips"><span class="chip chip-accent">Planejado</span></div>
+        <div>
+          <h3>Fechamento da obra (4 funcionalidades)</h3>
+          <p class="desc">Informativos de projeto · Vistoria para entrega · Entrega ao cliente · Encerramento administrativo. Spec 01-03/09 · Dev 04-17/09 · Teste 18-26/09 · Pronto 29/09.</p>
+        </div>
+        <div class="marco"><span>Pronto</span><b>29/09</b></div>
+      </article>
+      <article class="fase" style="--stripe: var(--accent)">
+        <div class="chips"><span class="chip chip-accent">Planejado</span></div>
+        <div>
+          <h3>Experiencia do Cliente</h3>
+          <p class="desc">Andamento da reforma · imagens · RSO do cliente · contratos (escopo a definir na spec com Phelps). Spec 22-26/09 · Dev 29/09-24/10 · Teste 27/10-07/11 · Pronto 10/11.</p>
+        </div>
+        <div class="marco"><span>Pronto</span><b>10/11</b></div>
+      </article>
+    </div>
+  </section>
+
+  <section class="duas">
+    <div>
+      <h2>Como acompanhamos</h2>
+      <ul>
+        <li><b>Esta pagina</b> se atualiza sozinha quando uma fase muda de status.</li>
+        <li><b>Testes E2E</b> manuais + agente a cada entrega.</li>
+        <li><b>Ritmo atual:</b> achado de teste de manha, correcao publicada no mesmo dia.</li>
+      </ul>
+    </div>
+    <div>
+      <h2>Premissas</h2>
+      <ul>
+        <li>Prazos incluem os testes com o time, nao so o desenvolvimento.</li>
+        <li>Mudanca de escopo dentro de uma fase empurra a fase — o combinado e <b>"refinar, nao inflar"</b>.</li>
+        <li>Datas em dias uteis; horizonte de ~3 meses.</li>
+      </ul>
+    </div>
+  </section>
+
+  <footer>Gerada automaticamente a partir do plano de entregas · Decorafit-tech · 20/08/2026, 05:46 (horario de Brasilia)</footer>
+</div>
+</body>
+</html>
