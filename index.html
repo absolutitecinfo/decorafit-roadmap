@@ -31,13 +31,15 @@
   * { box-sizing: border-box; }
   body { margin:0; background:var(--paper); color:var(--ink);
     font-family:"IBM Plex Sans","Segoe UI",system-ui,sans-serif; font-size:16px; line-height:1.55; }
-  .wrap { max-width:1080px; margin:0 auto; padding:40px 20px 64px;
-    display:flex; flex-direction:column; gap:36px; }
-  .eyebrow { font-family:"IBM Plex Mono",monospace; font-size:.72rem;
-    letter-spacing:.14em; text-transform:uppercase; color:var(--accent); margin:0 0 10px; }
+  .wrap { max-width:1080px; margin:0 auto; padding:18px 20px 56px;
+    display:flex; flex-direction:column; gap:22px; }
+  /* Cabeçalho compacto: o destaque da página é o Gantt, não o título. */
+  header { display:flex; flex-wrap:wrap; align-items:baseline; gap:4px 18px; }
+  .eyebrow { font-family:"IBM Plex Mono",monospace; font-size:.68rem;
+    letter-spacing:.12em; text-transform:uppercase; color:var(--ink-subtle); margin:0 0 0 auto; }
   header h1 { font-family:"Archivo","Segoe UI",sans-serif; font-weight:700;
-    font-size:clamp(1.7rem,4vw,2.3rem); letter-spacing:-.01em; margin:0 0 6px; text-wrap:balance; }
-  header p.lead { margin:0; color:var(--ink-muted); max-width:62ch; }
+    font-size:1.35rem; letter-spacing:-.01em; margin:0; }
+  header p.lead { margin:0; flex-basis:100%; font-size:.84rem; color:var(--ink-subtle); }
   h2 { font-family:"Archivo","Segoe UI",sans-serif; font-weight:600; font-size:1.12rem; margin:0 0 14px; }
 
   /* ── Gantt ── */
@@ -110,16 +112,12 @@
 <body>
 <div class="wrap">
   <header>
-    <p class="eyebrow">Plataforma Decorafit · atualizado em 21/08/2026, 09:12</p>
-    <h1>Release Plan — ago a nov/2026</h1>
-    <p class="lead">Cronograma de entregas da plataforma. Esta pagina e gerada
-    automaticamente a partir do andamento real do projeto — o status de cada
-    fase reflete o estado de agora, nao uma foto antiga.</p>
+    <h1>Release Plan — ago a nov/2026 · Plataforma Decorafit</h1>
+    <p class="eyebrow">Atualizado em 21/08/2026, 09:22</p>
+    <p class="lead">Clique no nome de uma entrega para ver o que ela significa.</p>
   </header>
 
   <section>
-    <h2>Cronograma</h2>
-    <p style="margin:-6px 0 12px;font-size:.84rem;color:var(--ink-subtle)">Clique no nome de uma entrega para ver o que ela significa.</p>
     <div class="g-scroll">
       <div class="gantt">
         <div class="g-head">
@@ -130,7 +128,7 @@
           <div class="g-head-cell" style="align-self:center">Marcos</div>
           <div class="g-marcos-lane">
             <div class="g-grade" style="left:3.81%"></div><div class="g-grade" style="left:10.48%"></div><div class="g-grade" style="left:17.14%"></div><div class="g-grade" style="left:23.81%"></div><div class="g-grade" style="left:30.48%"></div><div class="g-grade" style="left:37.14%"></div><div class="g-grade" style="left:43.81%"></div><div class="g-grade" style="left:50.48%"></div><div class="g-grade" style="left:57.14%"></div><div class="g-grade" style="left:63.81%"></div><div class="g-grade" style="left:70.48%"></div><div class="g-grade" style="left:77.14%"></div><div class="g-grade" style="left:83.81%"></div><div class="g-grade" style="left:90.48%"></div><div class="g-grade" style="left:97.14%"></div>
-            <div class="g-hoje" style="left:14.77%"></div>
+            <div class="g-hoje" style="left:14.78%"></div>
             
         <div class="g-losango" style="left:24.76%"></div>
         <div class="g-marco-rotulo cima" style="left:24.76%"><b>01/09</b><span>Planilha Orçamentária</span></div>
@@ -149,7 +147,7 @@
         </button>
         <div class="g-track">
           <div class="g-grade" style="left:3.81%"></div><div class="g-grade" style="left:10.48%"></div><div class="g-grade" style="left:17.14%"></div><div class="g-grade" style="left:23.81%"></div><div class="g-grade" style="left:30.48%"></div><div class="g-grade" style="left:37.14%"></div><div class="g-grade" style="left:43.81%"></div><div class="g-grade" style="left:50.48%"></div><div class="g-grade" style="left:57.14%"></div><div class="g-grade" style="left:63.81%"></div><div class="g-grade" style="left:70.48%"></div><div class="g-grade" style="left:77.14%"></div><div class="g-grade" style="left:83.81%"></div><div class="g-grade" style="left:90.48%"></div><div class="g-grade" style="left:97.14%"></div>
-          <div class="g-hoje" style="left:14.77%"></div>
+          <div class="g-hoje" style="left:14.78%"></div>
           <div class="g-bar bar-teste" style="left:3.81%;width:20.95%" title="Planilha Orçamentária · 10/08 – 01/09"><span class="g-periodo">10/08 – 01/09</span></div>
         </div>
       </div>
@@ -166,7 +164,7 @@
         </button>
         <div class="g-track">
           <div class="g-grade" style="left:3.81%"></div><div class="g-grade" style="left:10.48%"></div><div class="g-grade" style="left:17.14%"></div><div class="g-grade" style="left:23.81%"></div><div class="g-grade" style="left:30.48%"></div><div class="g-grade" style="left:37.14%"></div><div class="g-grade" style="left:43.81%"></div><div class="g-grade" style="left:50.48%"></div><div class="g-grade" style="left:57.14%"></div><div class="g-grade" style="left:63.81%"></div><div class="g-grade" style="left:70.48%"></div><div class="g-grade" style="left:77.14%"></div><div class="g-grade" style="left:83.81%"></div><div class="g-grade" style="left:90.48%"></div><div class="g-grade" style="left:97.14%"></div>
-          <div class="g-hoje" style="left:14.77%"></div>
+          <div class="g-hoje" style="left:14.78%"></div>
           <div class="g-bar bar-andamento" style="left:12.38%;width:13.33%" title="Medição e Pagamentos aos Empreiteiros · 19/08 – 02/09"><span class="g-periodo">19/08 – 02/09</span></div>
         </div>
       </div>
@@ -183,7 +181,7 @@
         </button>
         <div class="g-track">
           <div class="g-grade" style="left:3.81%"></div><div class="g-grade" style="left:10.48%"></div><div class="g-grade" style="left:17.14%"></div><div class="g-grade" style="left:23.81%"></div><div class="g-grade" style="left:30.48%"></div><div class="g-grade" style="left:37.14%"></div><div class="g-grade" style="left:43.81%"></div><div class="g-grade" style="left:50.48%"></div><div class="g-grade" style="left:57.14%"></div><div class="g-grade" style="left:63.81%"></div><div class="g-grade" style="left:70.48%"></div><div class="g-grade" style="left:77.14%"></div><div class="g-grade" style="left:83.81%"></div><div class="g-grade" style="left:90.48%"></div><div class="g-grade" style="left:97.14%"></div>
-          <div class="g-hoje" style="left:14.77%"></div>
+          <div class="g-hoje" style="left:14.78%"></div>
           <div class="g-bar bar-plan" style="left:14.29%;width:17.14%" title="Nota Fiscal no Pagamento a Fornecedores · 21/08 – 08/09"><span class="g-periodo">21/08 – 08/09</span></div>
         </div>
       </div>
@@ -200,7 +198,7 @@
         </button>
         <div class="g-track">
           <div class="g-grade" style="left:3.81%"></div><div class="g-grade" style="left:10.48%"></div><div class="g-grade" style="left:17.14%"></div><div class="g-grade" style="left:23.81%"></div><div class="g-grade" style="left:30.48%"></div><div class="g-grade" style="left:37.14%"></div><div class="g-grade" style="left:43.81%"></div><div class="g-grade" style="left:50.48%"></div><div class="g-grade" style="left:57.14%"></div><div class="g-grade" style="left:63.81%"></div><div class="g-grade" style="left:70.48%"></div><div class="g-grade" style="left:77.14%"></div><div class="g-grade" style="left:83.81%"></div><div class="g-grade" style="left:90.48%"></div><div class="g-grade" style="left:97.14%"></div>
-          <div class="g-hoje" style="left:14.77%"></div>
+          <div class="g-hoje" style="left:14.78%"></div>
           <div class="g-bar bar-plan" style="left:15.24%;width:16.19%" title="Compras da Obra — Pedidos e Cronograma · 22/08 – 08/09"><span class="g-periodo">22/08 – 08/09</span></div>
         </div>
       </div>
@@ -217,7 +215,7 @@
         </button>
         <div class="g-track">
           <div class="g-grade" style="left:3.81%"></div><div class="g-grade" style="left:10.48%"></div><div class="g-grade" style="left:17.14%"></div><div class="g-grade" style="left:23.81%"></div><div class="g-grade" style="left:30.48%"></div><div class="g-grade" style="left:37.14%"></div><div class="g-grade" style="left:43.81%"></div><div class="g-grade" style="left:50.48%"></div><div class="g-grade" style="left:57.14%"></div><div class="g-grade" style="left:63.81%"></div><div class="g-grade" style="left:70.48%"></div><div class="g-grade" style="left:77.14%"></div><div class="g-grade" style="left:83.81%"></div><div class="g-grade" style="left:90.48%"></div><div class="g-grade" style="left:97.14%"></div>
-          <div class="g-hoje" style="left:14.77%"></div>
+          <div class="g-hoje" style="left:14.78%"></div>
           <div class="g-bar bar-plan" style="left:18.10%;width:13.33%" title="Testes E2E com o Time · 25/08 – 08/09"><span class="g-periodo">25/08 – 08/09</span></div>
         </div>
       </div>
@@ -234,7 +232,7 @@
         </button>
         <div class="g-track">
           <div class="g-grade" style="left:3.81%"></div><div class="g-grade" style="left:10.48%"></div><div class="g-grade" style="left:17.14%"></div><div class="g-grade" style="left:23.81%"></div><div class="g-grade" style="left:30.48%"></div><div class="g-grade" style="left:37.14%"></div><div class="g-grade" style="left:43.81%"></div><div class="g-grade" style="left:50.48%"></div><div class="g-grade" style="left:57.14%"></div><div class="g-grade" style="left:63.81%"></div><div class="g-grade" style="left:70.48%"></div><div class="g-grade" style="left:77.14%"></div><div class="g-grade" style="left:83.81%"></div><div class="g-grade" style="left:90.48%"></div><div class="g-grade" style="left:97.14%"></div>
-          <div class="g-hoje" style="left:14.77%"></div>
+          <div class="g-hoje" style="left:14.78%"></div>
           <div class="g-bar bar-plan" style="left:24.76%;width:26.67%" title="Entrega da Obra ao Cliente · 01/09 – 29/09"><span class="g-periodo">01/09 – 29/09</span></div>
         </div>
       </div>
@@ -251,7 +249,7 @@
         </button>
         <div class="g-track">
           <div class="g-grade" style="left:3.81%"></div><div class="g-grade" style="left:10.48%"></div><div class="g-grade" style="left:17.14%"></div><div class="g-grade" style="left:23.81%"></div><div class="g-grade" style="left:30.48%"></div><div class="g-grade" style="left:37.14%"></div><div class="g-grade" style="left:43.81%"></div><div class="g-grade" style="left:50.48%"></div><div class="g-grade" style="left:57.14%"></div><div class="g-grade" style="left:63.81%"></div><div class="g-grade" style="left:70.48%"></div><div class="g-grade" style="left:77.14%"></div><div class="g-grade" style="left:83.81%"></div><div class="g-grade" style="left:90.48%"></div><div class="g-grade" style="left:97.14%"></div>
-          <div class="g-hoje" style="left:14.77%"></div>
+          <div class="g-hoje" style="left:14.78%"></div>
           <div class="g-bar bar-plan" style="left:44.76%;width:46.67%" title="Experiência do Cliente · 22/09 – 10/11"><span class="g-periodo">22/09 – 10/11</span></div>
         </div>
       </div>
@@ -277,22 +275,22 @@
     <div>
       <h2>Como acompanhamos</h2>
       <ul>
-        <li><b>Esta pagina</b> se atualiza sozinha quando uma fase muda de status.</li>
+        <li><b>Esta página</b> se atualiza sozinha quando uma fase muda de status.</li>
         <li><b>Testes E2E</b> manuais + agente a cada entrega.</li>
-        <li><b>Ritmo atual:</b> achado de teste de manha, correcao publicada no mesmo dia.</li>
+        <li><b>Ritmo atual:</b> achado de teste de manhã, correção publicada no mesmo dia.</li>
       </ul>
     </div>
     <div>
       <h2>Premissas</h2>
       <ul>
-        <li>Prazos incluem os testes com o time, nao so o desenvolvimento.</li>
-        <li>Mudanca de escopo dentro de uma fase empurra a fase — o combinado e <b>"refinar, nao inflar"</b>.</li>
-        <li>Datas em dias uteis; horizonte de ~3 meses.</li>
+        <li>Prazos incluem os testes com o time, não só o desenvolvimento.</li>
+        <li>Mudança de escopo dentro de uma fase empurra a fase — o combinado é <b>"refinar, não inflar"</b>.</li>
+        <li>Datas em dias úteis; horizonte de ~3 meses.</li>
       </ul>
     </div>
   </section>
 
-  <footer>Gerada automaticamente a partir do plano de entregas · Decorafit-tech · 21/08/2026, 09:12 (horario de Brasilia)</footer>
+  <footer>Gerada automaticamente a partir do plano de entregas · Decorafit-tech · 21/08/2026, 09:22 (horário de Brasília)</footer>
 </div>
 <script>
   document.querySelectorAll('[data-acc]').forEach(function (btn) {
