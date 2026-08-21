@@ -44,7 +44,7 @@
 
   /* ── Gantt ── */
   .g-scroll { overflow-x:auto; border:1px solid var(--hairline); border-radius:12px; background:var(--card); }
-  .gantt { min-width:820px; padding:0 0 14px; }
+  .gantt { min-width:920px; padding:0 0 14px; }
   .g-head { display:grid; grid-template-columns:316px 1fr; border-bottom:1px solid var(--hairline); }
   .g-head-cell { padding:10px 14px; font-family:"IBM Plex Mono",monospace; font-size:.7rem;
     letter-spacing:.1em; text-transform:uppercase; color:var(--ink-subtle); }
@@ -58,7 +58,7 @@
     transform:translate(-50%,-50%) rotate(45deg); background:var(--card);
     border:2.5px solid var(--accent); border-radius:2px; }
   .g-losango.done { background:var(--ok); border-color:var(--ok); }
-  .g-marco-rotulo { position:absolute; transform:translateX(-50%); width:130px; text-align:center;
+  .g-marco-rotulo { position:absolute; transform:translateX(-50%); width:112px; text-align:center;
     font-size:.72rem; line-height:1.3; color:var(--ink-muted); }
   .g-marco-rotulo b { display:block; font-family:"IBM Plex Mono",monospace; font-size:.72rem; color:var(--ink); }
   .g-marco-rotulo.cima { top:4px; } .g-marco-rotulo.baixo { bottom:4px; }
@@ -94,10 +94,10 @@
   .g-legenda { display:flex; flex-wrap:wrap; gap:14px 22px; padding:12px 14px 0; font-size:.78rem; color:var(--ink-muted); }
   .g-legenda span { display:inline-flex; align-items:center; gap:6px; }
 
-  /* ── Vitrine "Já entregue" ── */
-  .ent-n { font-family:"IBM Plex Mono",monospace; font-size:.78rem; color:var(--entregue);
-    background:var(--entregue-soft); border-radius:99px; padding:2px 10px; margin-left:8px; vertical-align:2px; }
-  .ent-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:10px; }
+  .g-periodo-fora { position:absolute; top:50%; transform:translateY(-50%); color:var(--ink-subtle); }
+
+  /* ── Funcionalidades entregues (painel do accordion "Já entregue") ── */
+  .ent-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:10px; padding:12px 16px; }
   .ent-card { display:flex; gap:10px; align-items:flex-start; background:var(--card);
     border:1px solid var(--hairline); border-radius:10px; padding:12px 14px; }
   .ent-check { flex:none; width:20px; height:20px; border-radius:50%; background:var(--entregue);
@@ -124,7 +124,7 @@
 <div class="wrap">
   <header>
     <h1>Release Plan — ago a nov/2026 · Plataforma Decorafit</h1>
-    <p class="eyebrow">Atualizado em 21/08/2026, 09:49</p>
+    <p class="eyebrow">Atualizado em 21/08/2026, 10:08</p>
     <p class="lead">Clique no nome de uma entrega para ver o que ela significa.</p>
   </header>
 
@@ -133,33 +133,59 @@
       <div class="gantt">
         <div class="g-head">
           <div class="g-head-cell">Entrega</div>
-          <div class="g-meses"><div class="g-mes" style="left:0.00%;width:24.76%">Ago</div><div class="g-mes" style="left:24.76%;width:28.57%">Set</div><div class="g-mes" style="left:53.33%;width:29.52%">Out</div><div class="g-mes" style="left:82.86%;width:17.14%">Nov</div></div>
+          <div class="g-meses"><div class="g-mes" style="left:0.00%;width:2.11%"></div><div class="g-mes" style="left:2.11%;width:12.66%">Abr</div><div class="g-mes" style="left:14.77%;width:13.08%">Mai</div><div class="g-mes" style="left:27.85%;width:12.66%">Jun</div><div class="g-mes" style="left:40.51%;width:13.08%">Jul</div><div class="g-mes" style="left:53.59%;width:13.08%">Ago</div><div class="g-mes" style="left:66.67%;width:12.66%">Set</div><div class="g-mes" style="left:79.32%;width:13.08%">Out</div><div class="g-mes" style="left:92.41%;width:7.59%">Nov</div></div>
         </div>
         <div class="g-marcos">
           <div class="g-head-cell" style="align-self:center">Marcos</div>
           <div class="g-marcos-lane">
-            <div class="g-grade" style="left:3.81%"></div><div class="g-grade" style="left:10.48%"></div><div class="g-grade" style="left:17.14%"></div><div class="g-grade" style="left:23.81%"></div><div class="g-grade" style="left:30.48%"></div><div class="g-grade" style="left:37.14%"></div><div class="g-grade" style="left:43.81%"></div><div class="g-grade" style="left:50.48%"></div><div class="g-grade" style="left:57.14%"></div><div class="g-grade" style="left:63.81%"></div><div class="g-grade" style="left:70.48%"></div><div class="g-grade" style="left:77.14%"></div><div class="g-grade" style="left:83.81%"></div><div class="g-grade" style="left:90.48%"></div><div class="g-grade" style="left:97.14%"></div>
-            <div class="g-hoje" style="left:14.79%"></div>
+            <div class="g-grade" style="left:1.27%"></div><div class="g-grade" style="left:4.22%"></div><div class="g-grade" style="left:7.17%"></div><div class="g-grade" style="left:10.13%"></div><div class="g-grade" style="left:13.08%"></div><div class="g-grade" style="left:16.03%"></div><div class="g-grade" style="left:18.99%"></div><div class="g-grade" style="left:21.94%"></div><div class="g-grade" style="left:24.89%"></div><div class="g-grade" style="left:27.85%"></div><div class="g-grade" style="left:30.80%"></div><div class="g-grade" style="left:33.76%"></div><div class="g-grade" style="left:36.71%"></div><div class="g-grade" style="left:39.66%"></div><div class="g-grade" style="left:42.62%"></div><div class="g-grade" style="left:45.57%"></div><div class="g-grade" style="left:48.52%"></div><div class="g-grade" style="left:51.48%"></div><div class="g-grade" style="left:54.43%"></div><div class="g-grade" style="left:57.38%"></div><div class="g-grade" style="left:60.34%"></div><div class="g-grade" style="left:63.29%"></div><div class="g-grade" style="left:66.24%"></div><div class="g-grade" style="left:69.20%"></div><div class="g-grade" style="left:72.15%"></div><div class="g-grade" style="left:75.11%"></div><div class="g-grade" style="left:78.06%"></div><div class="g-grade" style="left:81.01%"></div><div class="g-grade" style="left:83.97%"></div><div class="g-grade" style="left:86.92%"></div><div class="g-grade" style="left:89.87%"></div><div class="g-grade" style="left:92.83%"></div><div class="g-grade" style="left:95.78%"></div><div class="g-grade" style="left:98.73%"></div>
+            <div class="g-hoje" style="left:62.26%"></div>
             
-        <div class="g-losango" style="left:24.76%"></div>
-        <div class="g-marco-rotulo cima" style="left:24.76%"><b>01/09</b><span>Planilha Orçamentária</span></div>
-        <div class="g-losango" style="left:31.43%"></div>
-        <div class="g-marco-rotulo baixo" style="left:31.43%"><b>08/09</b><span>v1.0 — Ciclo Obra→Pagamento</span></div>
-        <div class="g-losango" style="left:51.43%"></div>
-        <div class="g-marco-rotulo cima" style="left:51.43%"><b>29/09</b><span>Entrega da Obra</span></div>
-        <div class="g-losango" style="left:91.43%"></div>
-        <div class="g-marco-rotulo baixo" style="left:91.43%"><b>10/11</b><span>Experiência do Cliente</span></div>
+        <div class="g-losango" style="left:66.67%"></div>
+        <div class="g-marco-rotulo cima" style="left:66.67%"><b>01/09</b><span>Planilha Orçamentária</span></div>
+        <div class="g-losango" style="left:69.62%"></div>
+        <div class="g-marco-rotulo baixo" style="left:69.62%"><b>08/09</b><span>v1.0 — Ciclo Obra→Pagamento</span></div>
+        <div class="g-losango" style="left:78.48%"></div>
+        <div class="g-marco-rotulo cima" style="left:78.48%"><b>29/09</b><span>Entrega da Obra</span></div>
+        <div class="g-losango" style="left:96.20%"></div>
+        <div class="g-marco-rotulo baixo" style="left:96.20%"><b>10/11</b><span>Experiência do Cliente</span></div>
           </div>
         </div>
         
+      <div class="g-row">
+        <button type="button" class="g-titulo" aria-expanded="false" aria-controls="desc-entregue" data-acc>
+          <span class="g-caret"></span><span class="dot dot-entregue"></span><span class="g-nome"><b>Já entregue</b> (11 funcionalidades)</span>
+        </button>
+        <div class="g-track">
+          <div class="g-grade" style="left:1.27%"></div><div class="g-grade" style="left:4.22%"></div><div class="g-grade" style="left:7.17%"></div><div class="g-grade" style="left:10.13%"></div><div class="g-grade" style="left:13.08%"></div><div class="g-grade" style="left:16.03%"></div><div class="g-grade" style="left:18.99%"></div><div class="g-grade" style="left:21.94%"></div><div class="g-grade" style="left:24.89%"></div><div class="g-grade" style="left:27.85%"></div><div class="g-grade" style="left:30.80%"></div><div class="g-grade" style="left:33.76%"></div><div class="g-grade" style="left:36.71%"></div><div class="g-grade" style="left:39.66%"></div><div class="g-grade" style="left:42.62%"></div><div class="g-grade" style="left:45.57%"></div><div class="g-grade" style="left:48.52%"></div><div class="g-grade" style="left:51.48%"></div><div class="g-grade" style="left:54.43%"></div><div class="g-grade" style="left:57.38%"></div><div class="g-grade" style="left:60.34%"></div><div class="g-grade" style="left:63.29%"></div><div class="g-grade" style="left:66.24%"></div><div class="g-grade" style="left:69.20%"></div><div class="g-grade" style="left:72.15%"></div><div class="g-grade" style="left:75.11%"></div><div class="g-grade" style="left:78.06%"></div><div class="g-grade" style="left:81.01%"></div><div class="g-grade" style="left:83.97%"></div><div class="g-grade" style="left:86.92%"></div><div class="g-grade" style="left:89.87%"></div><div class="g-grade" style="left:92.83%"></div><div class="g-grade" style="left:95.78%"></div><div class="g-grade" style="left:98.73%"></div>
+          <div class="g-hoje" style="left:62.26%"></div>
+          <div class="g-bar bar-entregue" style="left:1.69%;width:59.07%" title="Já entregue · 31/03 – 18/08"><span class="g-check">&#10003;</span><span class="g-periodo">31/03 – 18/08</span></div>
+        </div>
+      </div>
+      <div class="g-desc" id="desc-entregue" hidden>
+        <div class="ent-grid">
+      <div class="ent-card"><span class="ent-check">&#10003;</span><div><b>Plataforma hospedada em São Paulo (Brasil)</b><p>Servidores migrados dos Estados Unidos para São Paulo: dados no Brasil e navegação mais rápida para o time e para o cliente.</p></div></div>
+      <div class="ent-card"><span class="ent-check">&#10003;</span><div><b>Migração do banco de dados</b><p>Banco de dados migrado para infraestrutura gerenciada, com backups automáticos e alta disponibilidade.</p></div></div>
+      <div class="ent-card"><span class="ent-check">&#10003;</span><div><b>Segurança de dados no banco (RLS)</b><p>Cada usuário enxerga somente o que lhe pertence, garantido na própria camada do banco de dados (Row-Level Security).</p></div></div>
+      <div class="ent-card"><span class="ent-check">&#10003;</span><div><b>Gestão de acessos e papéis</b><p>Portais separados para cliente, executor e escritório, com permissões por papel e concessão de acesso controlada.</p></div></div>
+      <div class="ent-card"><span class="ent-check">&#10003;</span><div><b>Relatório Semanal da Obra (RSO)</b><p>O andamento de cada obra documentado semana a semana.</p></div></div>
+      <div class="ent-card"><span class="ent-check">&#10003;</span><div><b>Controle de Qualidade (FVS)</b><p>Fichas de verificação de serviço preenchidas na obra, com fotos como evidência.</p></div></div>
+      <div class="ent-card"><span class="ent-check">&#10003;</span><div><b>Homologação de fornecedores e prestadores</b><p>Cadastro e homologação de fornecedores e prestadores de serviço, incluindo auto-cadastro com aprovação do escritório.</p></div></div>
+      <div class="ent-card"><span class="ent-check">&#10003;</span><div><b>Cotações de materiais com fornecedores</b><p>Cotações enviadas, respondidas e comparadas dentro da plataforma.</p></div></div>
+      <div class="ent-card"><span class="ent-check">&#10003;</span><div><b>Orçamento com histórico de versões</b><p>A evolução de cada orçamento registrada versão a versão, visível também para o cliente.</p></div></div>
+      <div class="ent-card"><span class="ent-check">&#10003;</span><div><b>Marcação de plantas com IA</b><p>A planta do apartamento marcada automaticamente com medidas sugeridas por inteligência artificial.</p></div></div>
+      <div class="ent-card"><span class="ent-check">&#10003;</span><div><b>E-mails automáticos e recuperação de acesso</b><p>Convites, cotações e redefinição de senha por e-mail, direto da plataforma.</p></div></div>
+        </div>
+      </div>
       <div class="g-row">
         <button type="button" class="g-titulo" aria-expanded="false" aria-controls="desc-0" data-acc>
           <span class="g-caret"></span><span class="dot dot-teste"></span><span class="g-nome">Planilha Orçamentária</span>
         </button>
         <div class="g-track">
-          <div class="g-grade" style="left:3.81%"></div><div class="g-grade" style="left:10.48%"></div><div class="g-grade" style="left:17.14%"></div><div class="g-grade" style="left:23.81%"></div><div class="g-grade" style="left:30.48%"></div><div class="g-grade" style="left:37.14%"></div><div class="g-grade" style="left:43.81%"></div><div class="g-grade" style="left:50.48%"></div><div class="g-grade" style="left:57.14%"></div><div class="g-grade" style="left:63.81%"></div><div class="g-grade" style="left:70.48%"></div><div class="g-grade" style="left:77.14%"></div><div class="g-grade" style="left:83.81%"></div><div class="g-grade" style="left:90.48%"></div><div class="g-grade" style="left:97.14%"></div>
-          <div class="g-hoje" style="left:14.79%"></div>
-          <div class="g-bar bar-teste" style="left:3.81%;width:20.95%" title="Planilha Orçamentária · 10/08 – 01/09"><span class="g-periodo">10/08 – 01/09</span></div>
+          <div class="g-grade" style="left:1.27%"></div><div class="g-grade" style="left:4.22%"></div><div class="g-grade" style="left:7.17%"></div><div class="g-grade" style="left:10.13%"></div><div class="g-grade" style="left:13.08%"></div><div class="g-grade" style="left:16.03%"></div><div class="g-grade" style="left:18.99%"></div><div class="g-grade" style="left:21.94%"></div><div class="g-grade" style="left:24.89%"></div><div class="g-grade" style="left:27.85%"></div><div class="g-grade" style="left:30.80%"></div><div class="g-grade" style="left:33.76%"></div><div class="g-grade" style="left:36.71%"></div><div class="g-grade" style="left:39.66%"></div><div class="g-grade" style="left:42.62%"></div><div class="g-grade" style="left:45.57%"></div><div class="g-grade" style="left:48.52%"></div><div class="g-grade" style="left:51.48%"></div><div class="g-grade" style="left:54.43%"></div><div class="g-grade" style="left:57.38%"></div><div class="g-grade" style="left:60.34%"></div><div class="g-grade" style="left:63.29%"></div><div class="g-grade" style="left:66.24%"></div><div class="g-grade" style="left:69.20%"></div><div class="g-grade" style="left:72.15%"></div><div class="g-grade" style="left:75.11%"></div><div class="g-grade" style="left:78.06%"></div><div class="g-grade" style="left:81.01%"></div><div class="g-grade" style="left:83.97%"></div><div class="g-grade" style="left:86.92%"></div><div class="g-grade" style="left:89.87%"></div><div class="g-grade" style="left:92.83%"></div><div class="g-grade" style="left:95.78%"></div><div class="g-grade" style="left:98.73%"></div>
+          <div class="g-hoje" style="left:62.26%"></div>
+          <div class="g-bar bar-teste" style="left:57.38%;width:9.28%" title="Planilha Orçamentária · 10/08 – 01/09"></div>
+          <span class="g-periodo g-periodo-fora" style="left:calc(57.38% + 9.28% + 6px)">10/08 – 01/09</span>
         </div>
       </div>
       <div class="g-desc" id="desc-0" hidden>
@@ -174,9 +200,10 @@
           <span class="g-caret"></span><span class="dot dot-andamento"></span><span class="g-nome">Planejamento Inicial</span>
         </button>
         <div class="g-track">
-          <div class="g-grade" style="left:3.81%"></div><div class="g-grade" style="left:10.48%"></div><div class="g-grade" style="left:17.14%"></div><div class="g-grade" style="left:23.81%"></div><div class="g-grade" style="left:30.48%"></div><div class="g-grade" style="left:37.14%"></div><div class="g-grade" style="left:43.81%"></div><div class="g-grade" style="left:50.48%"></div><div class="g-grade" style="left:57.14%"></div><div class="g-grade" style="left:63.81%"></div><div class="g-grade" style="left:70.48%"></div><div class="g-grade" style="left:77.14%"></div><div class="g-grade" style="left:83.81%"></div><div class="g-grade" style="left:90.48%"></div><div class="g-grade" style="left:97.14%"></div>
-          <div class="g-hoje" style="left:14.79%"></div>
-          <div class="g-bar bar-andamento" style="left:3.81%;width:27.62%" title="Planejamento Inicial · 10/08 – 08/09"><span class="g-periodo">10/08 – 08/09</span></div>
+          <div class="g-grade" style="left:1.27%"></div><div class="g-grade" style="left:4.22%"></div><div class="g-grade" style="left:7.17%"></div><div class="g-grade" style="left:10.13%"></div><div class="g-grade" style="left:13.08%"></div><div class="g-grade" style="left:16.03%"></div><div class="g-grade" style="left:18.99%"></div><div class="g-grade" style="left:21.94%"></div><div class="g-grade" style="left:24.89%"></div><div class="g-grade" style="left:27.85%"></div><div class="g-grade" style="left:30.80%"></div><div class="g-grade" style="left:33.76%"></div><div class="g-grade" style="left:36.71%"></div><div class="g-grade" style="left:39.66%"></div><div class="g-grade" style="left:42.62%"></div><div class="g-grade" style="left:45.57%"></div><div class="g-grade" style="left:48.52%"></div><div class="g-grade" style="left:51.48%"></div><div class="g-grade" style="left:54.43%"></div><div class="g-grade" style="left:57.38%"></div><div class="g-grade" style="left:60.34%"></div><div class="g-grade" style="left:63.29%"></div><div class="g-grade" style="left:66.24%"></div><div class="g-grade" style="left:69.20%"></div><div class="g-grade" style="left:72.15%"></div><div class="g-grade" style="left:75.11%"></div><div class="g-grade" style="left:78.06%"></div><div class="g-grade" style="left:81.01%"></div><div class="g-grade" style="left:83.97%"></div><div class="g-grade" style="left:86.92%"></div><div class="g-grade" style="left:89.87%"></div><div class="g-grade" style="left:92.83%"></div><div class="g-grade" style="left:95.78%"></div><div class="g-grade" style="left:98.73%"></div>
+          <div class="g-hoje" style="left:62.26%"></div>
+          <div class="g-bar bar-andamento" style="left:57.38%;width:12.24%" title="Planejamento Inicial · 10/08 – 08/09"></div>
+          <span class="g-periodo g-periodo-fora" style="left:calc(57.38% + 12.24% + 6px)">10/08 – 08/09</span>
         </div>
       </div>
       <div class="g-desc" id="desc-1" hidden>
@@ -191,9 +218,10 @@
           <span class="g-caret"></span><span class="dot dot-andamento"></span><span class="g-nome">Medição e Pagamentos aos Empreiteiros</span>
         </button>
         <div class="g-track">
-          <div class="g-grade" style="left:3.81%"></div><div class="g-grade" style="left:10.48%"></div><div class="g-grade" style="left:17.14%"></div><div class="g-grade" style="left:23.81%"></div><div class="g-grade" style="left:30.48%"></div><div class="g-grade" style="left:37.14%"></div><div class="g-grade" style="left:43.81%"></div><div class="g-grade" style="left:50.48%"></div><div class="g-grade" style="left:57.14%"></div><div class="g-grade" style="left:63.81%"></div><div class="g-grade" style="left:70.48%"></div><div class="g-grade" style="left:77.14%"></div><div class="g-grade" style="left:83.81%"></div><div class="g-grade" style="left:90.48%"></div><div class="g-grade" style="left:97.14%"></div>
-          <div class="g-hoje" style="left:14.79%"></div>
-          <div class="g-bar bar-andamento" style="left:12.38%;width:13.33%" title="Medição e Pagamentos aos Empreiteiros · 19/08 – 02/09"><span class="g-periodo">19/08 – 02/09</span></div>
+          <div class="g-grade" style="left:1.27%"></div><div class="g-grade" style="left:4.22%"></div><div class="g-grade" style="left:7.17%"></div><div class="g-grade" style="left:10.13%"></div><div class="g-grade" style="left:13.08%"></div><div class="g-grade" style="left:16.03%"></div><div class="g-grade" style="left:18.99%"></div><div class="g-grade" style="left:21.94%"></div><div class="g-grade" style="left:24.89%"></div><div class="g-grade" style="left:27.85%"></div><div class="g-grade" style="left:30.80%"></div><div class="g-grade" style="left:33.76%"></div><div class="g-grade" style="left:36.71%"></div><div class="g-grade" style="left:39.66%"></div><div class="g-grade" style="left:42.62%"></div><div class="g-grade" style="left:45.57%"></div><div class="g-grade" style="left:48.52%"></div><div class="g-grade" style="left:51.48%"></div><div class="g-grade" style="left:54.43%"></div><div class="g-grade" style="left:57.38%"></div><div class="g-grade" style="left:60.34%"></div><div class="g-grade" style="left:63.29%"></div><div class="g-grade" style="left:66.24%"></div><div class="g-grade" style="left:69.20%"></div><div class="g-grade" style="left:72.15%"></div><div class="g-grade" style="left:75.11%"></div><div class="g-grade" style="left:78.06%"></div><div class="g-grade" style="left:81.01%"></div><div class="g-grade" style="left:83.97%"></div><div class="g-grade" style="left:86.92%"></div><div class="g-grade" style="left:89.87%"></div><div class="g-grade" style="left:92.83%"></div><div class="g-grade" style="left:95.78%"></div><div class="g-grade" style="left:98.73%"></div>
+          <div class="g-hoje" style="left:62.26%"></div>
+          <div class="g-bar bar-andamento" style="left:61.18%;width:5.91%" title="Medição e Pagamentos aos Empreiteiros · 19/08 – 02/09"></div>
+          <span class="g-periodo g-periodo-fora" style="left:calc(61.18% + 5.91% + 6px)">19/08 – 02/09</span>
         </div>
       </div>
       <div class="g-desc" id="desc-2" hidden>
@@ -208,9 +236,10 @@
           <span class="g-caret"></span><span class="dot dot-andamento"></span><span class="g-nome">Contratações Iniciais de Prestadores de Serviços</span>
         </button>
         <div class="g-track">
-          <div class="g-grade" style="left:3.81%"></div><div class="g-grade" style="left:10.48%"></div><div class="g-grade" style="left:17.14%"></div><div class="g-grade" style="left:23.81%"></div><div class="g-grade" style="left:30.48%"></div><div class="g-grade" style="left:37.14%"></div><div class="g-grade" style="left:43.81%"></div><div class="g-grade" style="left:50.48%"></div><div class="g-grade" style="left:57.14%"></div><div class="g-grade" style="left:63.81%"></div><div class="g-grade" style="left:70.48%"></div><div class="g-grade" style="left:77.14%"></div><div class="g-grade" style="left:83.81%"></div><div class="g-grade" style="left:90.48%"></div><div class="g-grade" style="left:97.14%"></div>
-          <div class="g-hoje" style="left:14.79%"></div>
-          <div class="g-bar bar-andamento" style="left:12.38%;width:13.33%" title="Contratações Iniciais de Prestadores de Serviços · 19/08 – 02/09"><span class="g-periodo">19/08 – 02/09</span></div>
+          <div class="g-grade" style="left:1.27%"></div><div class="g-grade" style="left:4.22%"></div><div class="g-grade" style="left:7.17%"></div><div class="g-grade" style="left:10.13%"></div><div class="g-grade" style="left:13.08%"></div><div class="g-grade" style="left:16.03%"></div><div class="g-grade" style="left:18.99%"></div><div class="g-grade" style="left:21.94%"></div><div class="g-grade" style="left:24.89%"></div><div class="g-grade" style="left:27.85%"></div><div class="g-grade" style="left:30.80%"></div><div class="g-grade" style="left:33.76%"></div><div class="g-grade" style="left:36.71%"></div><div class="g-grade" style="left:39.66%"></div><div class="g-grade" style="left:42.62%"></div><div class="g-grade" style="left:45.57%"></div><div class="g-grade" style="left:48.52%"></div><div class="g-grade" style="left:51.48%"></div><div class="g-grade" style="left:54.43%"></div><div class="g-grade" style="left:57.38%"></div><div class="g-grade" style="left:60.34%"></div><div class="g-grade" style="left:63.29%"></div><div class="g-grade" style="left:66.24%"></div><div class="g-grade" style="left:69.20%"></div><div class="g-grade" style="left:72.15%"></div><div class="g-grade" style="left:75.11%"></div><div class="g-grade" style="left:78.06%"></div><div class="g-grade" style="left:81.01%"></div><div class="g-grade" style="left:83.97%"></div><div class="g-grade" style="left:86.92%"></div><div class="g-grade" style="left:89.87%"></div><div class="g-grade" style="left:92.83%"></div><div class="g-grade" style="left:95.78%"></div><div class="g-grade" style="left:98.73%"></div>
+          <div class="g-hoje" style="left:62.26%"></div>
+          <div class="g-bar bar-andamento" style="left:61.18%;width:5.91%" title="Contratações Iniciais de Prestadores de Serviços · 19/08 – 02/09"></div>
+          <span class="g-periodo g-periodo-fora" style="left:calc(61.18% + 5.91% + 6px)">19/08 – 02/09</span>
         </div>
       </div>
       <div class="g-desc" id="desc-3" hidden>
@@ -225,9 +254,10 @@
           <span class="g-caret"></span><span class="dot dot-andamento"></span><span class="g-nome">Compra de Materiais</span>
         </button>
         <div class="g-track">
-          <div class="g-grade" style="left:3.81%"></div><div class="g-grade" style="left:10.48%"></div><div class="g-grade" style="left:17.14%"></div><div class="g-grade" style="left:23.81%"></div><div class="g-grade" style="left:30.48%"></div><div class="g-grade" style="left:37.14%"></div><div class="g-grade" style="left:43.81%"></div><div class="g-grade" style="left:50.48%"></div><div class="g-grade" style="left:57.14%"></div><div class="g-grade" style="left:63.81%"></div><div class="g-grade" style="left:70.48%"></div><div class="g-grade" style="left:77.14%"></div><div class="g-grade" style="left:83.81%"></div><div class="g-grade" style="left:90.48%"></div><div class="g-grade" style="left:97.14%"></div>
-          <div class="g-hoje" style="left:14.79%"></div>
-          <div class="g-bar bar-andamento" style="left:12.38%;width:19.05%" title="Compra de Materiais · 19/08 – 08/09"><span class="g-periodo">19/08 – 08/09</span></div>
+          <div class="g-grade" style="left:1.27%"></div><div class="g-grade" style="left:4.22%"></div><div class="g-grade" style="left:7.17%"></div><div class="g-grade" style="left:10.13%"></div><div class="g-grade" style="left:13.08%"></div><div class="g-grade" style="left:16.03%"></div><div class="g-grade" style="left:18.99%"></div><div class="g-grade" style="left:21.94%"></div><div class="g-grade" style="left:24.89%"></div><div class="g-grade" style="left:27.85%"></div><div class="g-grade" style="left:30.80%"></div><div class="g-grade" style="left:33.76%"></div><div class="g-grade" style="left:36.71%"></div><div class="g-grade" style="left:39.66%"></div><div class="g-grade" style="left:42.62%"></div><div class="g-grade" style="left:45.57%"></div><div class="g-grade" style="left:48.52%"></div><div class="g-grade" style="left:51.48%"></div><div class="g-grade" style="left:54.43%"></div><div class="g-grade" style="left:57.38%"></div><div class="g-grade" style="left:60.34%"></div><div class="g-grade" style="left:63.29%"></div><div class="g-grade" style="left:66.24%"></div><div class="g-grade" style="left:69.20%"></div><div class="g-grade" style="left:72.15%"></div><div class="g-grade" style="left:75.11%"></div><div class="g-grade" style="left:78.06%"></div><div class="g-grade" style="left:81.01%"></div><div class="g-grade" style="left:83.97%"></div><div class="g-grade" style="left:86.92%"></div><div class="g-grade" style="left:89.87%"></div><div class="g-grade" style="left:92.83%"></div><div class="g-grade" style="left:95.78%"></div><div class="g-grade" style="left:98.73%"></div>
+          <div class="g-hoje" style="left:62.26%"></div>
+          <div class="g-bar bar-andamento" style="left:61.18%;width:8.44%" title="Compra de Materiais · 19/08 – 08/09"></div>
+          <span class="g-periodo g-periodo-fora" style="left:calc(61.18% + 8.44% + 6px)">19/08 – 08/09</span>
         </div>
       </div>
       <div class="g-desc" id="desc-4" hidden>
@@ -242,9 +272,10 @@
           <span class="g-caret"></span><span class="dot dot-andamento"></span><span class="g-nome">Contratações de Materiais Estratégicos</span>
         </button>
         <div class="g-track">
-          <div class="g-grade" style="left:3.81%"></div><div class="g-grade" style="left:10.48%"></div><div class="g-grade" style="left:17.14%"></div><div class="g-grade" style="left:23.81%"></div><div class="g-grade" style="left:30.48%"></div><div class="g-grade" style="left:37.14%"></div><div class="g-grade" style="left:43.81%"></div><div class="g-grade" style="left:50.48%"></div><div class="g-grade" style="left:57.14%"></div><div class="g-grade" style="left:63.81%"></div><div class="g-grade" style="left:70.48%"></div><div class="g-grade" style="left:77.14%"></div><div class="g-grade" style="left:83.81%"></div><div class="g-grade" style="left:90.48%"></div><div class="g-grade" style="left:97.14%"></div>
-          <div class="g-hoje" style="left:14.79%"></div>
-          <div class="g-bar bar-andamento" style="left:12.38%;width:19.05%" title="Contratações de Materiais Estratégicos · 19/08 – 08/09"><span class="g-periodo">19/08 – 08/09</span></div>
+          <div class="g-grade" style="left:1.27%"></div><div class="g-grade" style="left:4.22%"></div><div class="g-grade" style="left:7.17%"></div><div class="g-grade" style="left:10.13%"></div><div class="g-grade" style="left:13.08%"></div><div class="g-grade" style="left:16.03%"></div><div class="g-grade" style="left:18.99%"></div><div class="g-grade" style="left:21.94%"></div><div class="g-grade" style="left:24.89%"></div><div class="g-grade" style="left:27.85%"></div><div class="g-grade" style="left:30.80%"></div><div class="g-grade" style="left:33.76%"></div><div class="g-grade" style="left:36.71%"></div><div class="g-grade" style="left:39.66%"></div><div class="g-grade" style="left:42.62%"></div><div class="g-grade" style="left:45.57%"></div><div class="g-grade" style="left:48.52%"></div><div class="g-grade" style="left:51.48%"></div><div class="g-grade" style="left:54.43%"></div><div class="g-grade" style="left:57.38%"></div><div class="g-grade" style="left:60.34%"></div><div class="g-grade" style="left:63.29%"></div><div class="g-grade" style="left:66.24%"></div><div class="g-grade" style="left:69.20%"></div><div class="g-grade" style="left:72.15%"></div><div class="g-grade" style="left:75.11%"></div><div class="g-grade" style="left:78.06%"></div><div class="g-grade" style="left:81.01%"></div><div class="g-grade" style="left:83.97%"></div><div class="g-grade" style="left:86.92%"></div><div class="g-grade" style="left:89.87%"></div><div class="g-grade" style="left:92.83%"></div><div class="g-grade" style="left:95.78%"></div><div class="g-grade" style="left:98.73%"></div>
+          <div class="g-hoje" style="left:62.26%"></div>
+          <div class="g-bar bar-andamento" style="left:61.18%;width:8.44%" title="Contratações de Materiais Estratégicos · 19/08 – 08/09"></div>
+          <span class="g-periodo g-periodo-fora" style="left:calc(61.18% + 8.44% + 6px)">19/08 – 08/09</span>
         </div>
       </div>
       <div class="g-desc" id="desc-5" hidden>
@@ -259,9 +290,10 @@
           <span class="g-caret"></span><span class="dot dot-plan"></span><span class="g-nome">Nota Fiscal no Pagamento a Fornecedores</span>
         </button>
         <div class="g-track">
-          <div class="g-grade" style="left:3.81%"></div><div class="g-grade" style="left:10.48%"></div><div class="g-grade" style="left:17.14%"></div><div class="g-grade" style="left:23.81%"></div><div class="g-grade" style="left:30.48%"></div><div class="g-grade" style="left:37.14%"></div><div class="g-grade" style="left:43.81%"></div><div class="g-grade" style="left:50.48%"></div><div class="g-grade" style="left:57.14%"></div><div class="g-grade" style="left:63.81%"></div><div class="g-grade" style="left:70.48%"></div><div class="g-grade" style="left:77.14%"></div><div class="g-grade" style="left:83.81%"></div><div class="g-grade" style="left:90.48%"></div><div class="g-grade" style="left:97.14%"></div>
-          <div class="g-hoje" style="left:14.79%"></div>
-          <div class="g-bar bar-plan" style="left:14.29%;width:17.14%" title="Nota Fiscal no Pagamento a Fornecedores · 21/08 – 08/09"><span class="g-periodo">21/08 – 08/09</span></div>
+          <div class="g-grade" style="left:1.27%"></div><div class="g-grade" style="left:4.22%"></div><div class="g-grade" style="left:7.17%"></div><div class="g-grade" style="left:10.13%"></div><div class="g-grade" style="left:13.08%"></div><div class="g-grade" style="left:16.03%"></div><div class="g-grade" style="left:18.99%"></div><div class="g-grade" style="left:21.94%"></div><div class="g-grade" style="left:24.89%"></div><div class="g-grade" style="left:27.85%"></div><div class="g-grade" style="left:30.80%"></div><div class="g-grade" style="left:33.76%"></div><div class="g-grade" style="left:36.71%"></div><div class="g-grade" style="left:39.66%"></div><div class="g-grade" style="left:42.62%"></div><div class="g-grade" style="left:45.57%"></div><div class="g-grade" style="left:48.52%"></div><div class="g-grade" style="left:51.48%"></div><div class="g-grade" style="left:54.43%"></div><div class="g-grade" style="left:57.38%"></div><div class="g-grade" style="left:60.34%"></div><div class="g-grade" style="left:63.29%"></div><div class="g-grade" style="left:66.24%"></div><div class="g-grade" style="left:69.20%"></div><div class="g-grade" style="left:72.15%"></div><div class="g-grade" style="left:75.11%"></div><div class="g-grade" style="left:78.06%"></div><div class="g-grade" style="left:81.01%"></div><div class="g-grade" style="left:83.97%"></div><div class="g-grade" style="left:86.92%"></div><div class="g-grade" style="left:89.87%"></div><div class="g-grade" style="left:92.83%"></div><div class="g-grade" style="left:95.78%"></div><div class="g-grade" style="left:98.73%"></div>
+          <div class="g-hoje" style="left:62.26%"></div>
+          <div class="g-bar bar-plan" style="left:62.03%;width:7.59%" title="Nota Fiscal no Pagamento a Fornecedores · 21/08 – 08/09"></div>
+          <span class="g-periodo g-periodo-fora" style="left:calc(62.03% + 7.59% + 6px)">21/08 – 08/09</span>
         </div>
       </div>
       <div class="g-desc" id="desc-6" hidden>
@@ -276,9 +308,10 @@
           <span class="g-caret"></span><span class="dot dot-plan"></span><span class="g-nome">Testes E2E com o Time</span>
         </button>
         <div class="g-track">
-          <div class="g-grade" style="left:3.81%"></div><div class="g-grade" style="left:10.48%"></div><div class="g-grade" style="left:17.14%"></div><div class="g-grade" style="left:23.81%"></div><div class="g-grade" style="left:30.48%"></div><div class="g-grade" style="left:37.14%"></div><div class="g-grade" style="left:43.81%"></div><div class="g-grade" style="left:50.48%"></div><div class="g-grade" style="left:57.14%"></div><div class="g-grade" style="left:63.81%"></div><div class="g-grade" style="left:70.48%"></div><div class="g-grade" style="left:77.14%"></div><div class="g-grade" style="left:83.81%"></div><div class="g-grade" style="left:90.48%"></div><div class="g-grade" style="left:97.14%"></div>
-          <div class="g-hoje" style="left:14.79%"></div>
-          <div class="g-bar bar-plan" style="left:18.10%;width:13.33%" title="Testes E2E com o Time · 25/08 – 08/09"><span class="g-periodo">25/08 – 08/09</span></div>
+          <div class="g-grade" style="left:1.27%"></div><div class="g-grade" style="left:4.22%"></div><div class="g-grade" style="left:7.17%"></div><div class="g-grade" style="left:10.13%"></div><div class="g-grade" style="left:13.08%"></div><div class="g-grade" style="left:16.03%"></div><div class="g-grade" style="left:18.99%"></div><div class="g-grade" style="left:21.94%"></div><div class="g-grade" style="left:24.89%"></div><div class="g-grade" style="left:27.85%"></div><div class="g-grade" style="left:30.80%"></div><div class="g-grade" style="left:33.76%"></div><div class="g-grade" style="left:36.71%"></div><div class="g-grade" style="left:39.66%"></div><div class="g-grade" style="left:42.62%"></div><div class="g-grade" style="left:45.57%"></div><div class="g-grade" style="left:48.52%"></div><div class="g-grade" style="left:51.48%"></div><div class="g-grade" style="left:54.43%"></div><div class="g-grade" style="left:57.38%"></div><div class="g-grade" style="left:60.34%"></div><div class="g-grade" style="left:63.29%"></div><div class="g-grade" style="left:66.24%"></div><div class="g-grade" style="left:69.20%"></div><div class="g-grade" style="left:72.15%"></div><div class="g-grade" style="left:75.11%"></div><div class="g-grade" style="left:78.06%"></div><div class="g-grade" style="left:81.01%"></div><div class="g-grade" style="left:83.97%"></div><div class="g-grade" style="left:86.92%"></div><div class="g-grade" style="left:89.87%"></div><div class="g-grade" style="left:92.83%"></div><div class="g-grade" style="left:95.78%"></div><div class="g-grade" style="left:98.73%"></div>
+          <div class="g-hoje" style="left:62.26%"></div>
+          <div class="g-bar bar-plan" style="left:63.71%;width:5.91%" title="Testes E2E com o Time · 25/08 – 08/09"></div>
+          <span class="g-periodo g-periodo-fora" style="left:calc(63.71% + 5.91% + 6px)">25/08 – 08/09</span>
         </div>
       </div>
       <div class="g-desc" id="desc-7" hidden>
@@ -293,9 +326,10 @@
           <span class="g-caret"></span><span class="dot dot-plan"></span><span class="g-nome">Cronograma de Compras</span>
         </button>
         <div class="g-track">
-          <div class="g-grade" style="left:3.81%"></div><div class="g-grade" style="left:10.48%"></div><div class="g-grade" style="left:17.14%"></div><div class="g-grade" style="left:23.81%"></div><div class="g-grade" style="left:30.48%"></div><div class="g-grade" style="left:37.14%"></div><div class="g-grade" style="left:43.81%"></div><div class="g-grade" style="left:50.48%"></div><div class="g-grade" style="left:57.14%"></div><div class="g-grade" style="left:63.81%"></div><div class="g-grade" style="left:70.48%"></div><div class="g-grade" style="left:77.14%"></div><div class="g-grade" style="left:83.81%"></div><div class="g-grade" style="left:90.48%"></div><div class="g-grade" style="left:97.14%"></div>
-          <div class="g-hoje" style="left:14.79%"></div>
-          <div class="g-bar bar-plan" style="left:18.10%;width:13.33%" title="Cronograma de Compras · 25/08 – 08/09"><span class="g-periodo">25/08 – 08/09</span></div>
+          <div class="g-grade" style="left:1.27%"></div><div class="g-grade" style="left:4.22%"></div><div class="g-grade" style="left:7.17%"></div><div class="g-grade" style="left:10.13%"></div><div class="g-grade" style="left:13.08%"></div><div class="g-grade" style="left:16.03%"></div><div class="g-grade" style="left:18.99%"></div><div class="g-grade" style="left:21.94%"></div><div class="g-grade" style="left:24.89%"></div><div class="g-grade" style="left:27.85%"></div><div class="g-grade" style="left:30.80%"></div><div class="g-grade" style="left:33.76%"></div><div class="g-grade" style="left:36.71%"></div><div class="g-grade" style="left:39.66%"></div><div class="g-grade" style="left:42.62%"></div><div class="g-grade" style="left:45.57%"></div><div class="g-grade" style="left:48.52%"></div><div class="g-grade" style="left:51.48%"></div><div class="g-grade" style="left:54.43%"></div><div class="g-grade" style="left:57.38%"></div><div class="g-grade" style="left:60.34%"></div><div class="g-grade" style="left:63.29%"></div><div class="g-grade" style="left:66.24%"></div><div class="g-grade" style="left:69.20%"></div><div class="g-grade" style="left:72.15%"></div><div class="g-grade" style="left:75.11%"></div><div class="g-grade" style="left:78.06%"></div><div class="g-grade" style="left:81.01%"></div><div class="g-grade" style="left:83.97%"></div><div class="g-grade" style="left:86.92%"></div><div class="g-grade" style="left:89.87%"></div><div class="g-grade" style="left:92.83%"></div><div class="g-grade" style="left:95.78%"></div><div class="g-grade" style="left:98.73%"></div>
+          <div class="g-hoje" style="left:62.26%"></div>
+          <div class="g-bar bar-plan" style="left:63.71%;width:5.91%" title="Cronograma de Compras · 25/08 – 08/09"></div>
+          <span class="g-periodo g-periodo-fora" style="left:calc(63.71% + 5.91% + 6px)">25/08 – 08/09</span>
         </div>
       </div>
       <div class="g-desc" id="desc-8" hidden>
@@ -310,9 +344,10 @@
           <span class="g-caret"></span><span class="dot dot-plan"></span><span class="g-nome">Entrega da Obra ao Cliente</span>
         </button>
         <div class="g-track">
-          <div class="g-grade" style="left:3.81%"></div><div class="g-grade" style="left:10.48%"></div><div class="g-grade" style="left:17.14%"></div><div class="g-grade" style="left:23.81%"></div><div class="g-grade" style="left:30.48%"></div><div class="g-grade" style="left:37.14%"></div><div class="g-grade" style="left:43.81%"></div><div class="g-grade" style="left:50.48%"></div><div class="g-grade" style="left:57.14%"></div><div class="g-grade" style="left:63.81%"></div><div class="g-grade" style="left:70.48%"></div><div class="g-grade" style="left:77.14%"></div><div class="g-grade" style="left:83.81%"></div><div class="g-grade" style="left:90.48%"></div><div class="g-grade" style="left:97.14%"></div>
-          <div class="g-hoje" style="left:14.79%"></div>
-          <div class="g-bar bar-plan" style="left:24.76%;width:26.67%" title="Entrega da Obra ao Cliente · 01/09 – 29/09"><span class="g-periodo">01/09 – 29/09</span></div>
+          <div class="g-grade" style="left:1.27%"></div><div class="g-grade" style="left:4.22%"></div><div class="g-grade" style="left:7.17%"></div><div class="g-grade" style="left:10.13%"></div><div class="g-grade" style="left:13.08%"></div><div class="g-grade" style="left:16.03%"></div><div class="g-grade" style="left:18.99%"></div><div class="g-grade" style="left:21.94%"></div><div class="g-grade" style="left:24.89%"></div><div class="g-grade" style="left:27.85%"></div><div class="g-grade" style="left:30.80%"></div><div class="g-grade" style="left:33.76%"></div><div class="g-grade" style="left:36.71%"></div><div class="g-grade" style="left:39.66%"></div><div class="g-grade" style="left:42.62%"></div><div class="g-grade" style="left:45.57%"></div><div class="g-grade" style="left:48.52%"></div><div class="g-grade" style="left:51.48%"></div><div class="g-grade" style="left:54.43%"></div><div class="g-grade" style="left:57.38%"></div><div class="g-grade" style="left:60.34%"></div><div class="g-grade" style="left:63.29%"></div><div class="g-grade" style="left:66.24%"></div><div class="g-grade" style="left:69.20%"></div><div class="g-grade" style="left:72.15%"></div><div class="g-grade" style="left:75.11%"></div><div class="g-grade" style="left:78.06%"></div><div class="g-grade" style="left:81.01%"></div><div class="g-grade" style="left:83.97%"></div><div class="g-grade" style="left:86.92%"></div><div class="g-grade" style="left:89.87%"></div><div class="g-grade" style="left:92.83%"></div><div class="g-grade" style="left:95.78%"></div><div class="g-grade" style="left:98.73%"></div>
+          <div class="g-hoje" style="left:62.26%"></div>
+          <div class="g-bar bar-plan" style="left:66.67%;width:11.81%" title="Entrega da Obra ao Cliente · 01/09 – 29/09"></div>
+          <span class="g-periodo g-periodo-fora" style="left:calc(66.67% + 11.81% + 6px)">01/09 – 29/09</span>
         </div>
       </div>
       <div class="g-desc" id="desc-9" hidden>
@@ -327,9 +362,10 @@
           <span class="g-caret"></span><span class="dot dot-plan"></span><span class="g-nome">Experiência do Cliente</span>
         </button>
         <div class="g-track">
-          <div class="g-grade" style="left:3.81%"></div><div class="g-grade" style="left:10.48%"></div><div class="g-grade" style="left:17.14%"></div><div class="g-grade" style="left:23.81%"></div><div class="g-grade" style="left:30.48%"></div><div class="g-grade" style="left:37.14%"></div><div class="g-grade" style="left:43.81%"></div><div class="g-grade" style="left:50.48%"></div><div class="g-grade" style="left:57.14%"></div><div class="g-grade" style="left:63.81%"></div><div class="g-grade" style="left:70.48%"></div><div class="g-grade" style="left:77.14%"></div><div class="g-grade" style="left:83.81%"></div><div class="g-grade" style="left:90.48%"></div><div class="g-grade" style="left:97.14%"></div>
-          <div class="g-hoje" style="left:14.79%"></div>
-          <div class="g-bar bar-plan" style="left:44.76%;width:46.67%" title="Experiência do Cliente · 22/09 – 10/11"><span class="g-periodo">22/09 – 10/11</span></div>
+          <div class="g-grade" style="left:1.27%"></div><div class="g-grade" style="left:4.22%"></div><div class="g-grade" style="left:7.17%"></div><div class="g-grade" style="left:10.13%"></div><div class="g-grade" style="left:13.08%"></div><div class="g-grade" style="left:16.03%"></div><div class="g-grade" style="left:18.99%"></div><div class="g-grade" style="left:21.94%"></div><div class="g-grade" style="left:24.89%"></div><div class="g-grade" style="left:27.85%"></div><div class="g-grade" style="left:30.80%"></div><div class="g-grade" style="left:33.76%"></div><div class="g-grade" style="left:36.71%"></div><div class="g-grade" style="left:39.66%"></div><div class="g-grade" style="left:42.62%"></div><div class="g-grade" style="left:45.57%"></div><div class="g-grade" style="left:48.52%"></div><div class="g-grade" style="left:51.48%"></div><div class="g-grade" style="left:54.43%"></div><div class="g-grade" style="left:57.38%"></div><div class="g-grade" style="left:60.34%"></div><div class="g-grade" style="left:63.29%"></div><div class="g-grade" style="left:66.24%"></div><div class="g-grade" style="left:69.20%"></div><div class="g-grade" style="left:72.15%"></div><div class="g-grade" style="left:75.11%"></div><div class="g-grade" style="left:78.06%"></div><div class="g-grade" style="left:81.01%"></div><div class="g-grade" style="left:83.97%"></div><div class="g-grade" style="left:86.92%"></div><div class="g-grade" style="left:89.87%"></div><div class="g-grade" style="left:92.83%"></div><div class="g-grade" style="left:95.78%"></div><div class="g-grade" style="left:98.73%"></div>
+          <div class="g-hoje" style="left:62.26%"></div>
+          <div class="g-bar bar-plan" style="left:75.53%;width:20.68%" title="Experiência do Cliente · 22/09 – 10/11"><span class="g-periodo">22/09 – 10/11</span></div>
+          
         </div>
       </div>
       <div class="g-desc" id="desc-10" hidden>
@@ -347,23 +383,6 @@
           <span><span class="dot" style="background:var(--hoje)"></span>Hoje</span>
         </div>
       </div>
-    </div>
-  </section>
-
-  <section>
-    <h2>Já entregue<span class="ent-n">11</span></h2>
-    <div class="ent-grid">
-      <div class="ent-card"><span class="ent-check">&#10003;</span><div><b>Plataforma hospedada em São Paulo (Brasil)</b><p>Servidores migrados dos Estados Unidos para São Paulo: dados no Brasil e navegação mais rápida para o time e para o cliente.</p></div></div>
-      <div class="ent-card"><span class="ent-check">&#10003;</span><div><b>Migração do banco de dados</b><p>Banco de dados migrado para infraestrutura gerenciada, com backups automáticos e alta disponibilidade.</p></div></div>
-      <div class="ent-card"><span class="ent-check">&#10003;</span><div><b>Segurança de dados no banco (RLS)</b><p>Cada usuário enxerga somente o que lhe pertence, garantido na própria camada do banco de dados (Row-Level Security).</p></div></div>
-      <div class="ent-card"><span class="ent-check">&#10003;</span><div><b>Gestão de acessos e papéis</b><p>Portais separados para cliente, executor e escritório, com permissões por papel e concessão de acesso controlada.</p></div></div>
-      <div class="ent-card"><span class="ent-check">&#10003;</span><div><b>Relatório Semanal da Obra (RSO)</b><p>O andamento de cada obra documentado semana a semana.</p></div></div>
-      <div class="ent-card"><span class="ent-check">&#10003;</span><div><b>Controle de Qualidade (FVS)</b><p>Fichas de verificação de serviço preenchidas na obra, com fotos como evidência.</p></div></div>
-      <div class="ent-card"><span class="ent-check">&#10003;</span><div><b>Homologação de fornecedores e prestadores</b><p>Cadastro e homologação de fornecedores e prestadores de serviço, incluindo auto-cadastro com aprovação do escritório.</p></div></div>
-      <div class="ent-card"><span class="ent-check">&#10003;</span><div><b>Cotações de materiais com fornecedores</b><p>Cotações enviadas, respondidas e comparadas dentro da plataforma.</p></div></div>
-      <div class="ent-card"><span class="ent-check">&#10003;</span><div><b>Orçamento com histórico de versões</b><p>A evolução de cada orçamento registrada versão a versão, visível também para o cliente.</p></div></div>
-      <div class="ent-card"><span class="ent-check">&#10003;</span><div><b>Marcação de plantas com IA</b><p>A planta do apartamento marcada automaticamente com medidas sugeridas por inteligência artificial.</p></div></div>
-      <div class="ent-card"><span class="ent-check">&#10003;</span><div><b>E-mails automáticos e recuperação de acesso</b><p>Convites, cotações e redefinição de senha por e-mail, direto da plataforma.</p></div></div>
     </div>
   </section>
 
@@ -386,7 +405,7 @@
     </div>
   </section>
 
-  <footer>Gerada automaticamente a partir do plano de entregas · Decorafit-tech · 21/08/2026, 09:49 (horário de Brasília)</footer>
+  <footer>Gerada automaticamente a partir do plano de entregas · Decorafit-tech · 21/08/2026, 10:08 (horário de Brasília)</footer>
 </div>
 <script>
   document.querySelectorAll('[data-acc]').forEach(function (btn) {
